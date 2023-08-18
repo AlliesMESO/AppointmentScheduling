@@ -44,6 +44,7 @@ namespace AppointmentScheduling.Utility
                         smtp.UseDefaultCredentials = false;
                         smtp.Credentials = NetworkCred;
                         smtp.Send(mm);
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                     }
                 }
             }
