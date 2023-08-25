@@ -2,7 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/stylesSheet.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div class="earth-container">
+        <div class="atom-orbit">
+            <div class="atom"></div>
+            </div>
+        <img class="spinning-earth" src="images/earth-image.png" alt="" width="200" height="200">
+@*        <div class="blinking-light"></div>
+*@    </div>
+</body>
+</html>

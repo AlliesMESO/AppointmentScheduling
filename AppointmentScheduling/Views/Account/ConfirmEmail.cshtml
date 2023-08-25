@@ -1,6 +1,18 @@
-﻿@{
+﻿@using System.Web;
+
+@{
     ViewData["Title"] = "Email Confirmed";
+    string userId = Model.UserId;
+    string callbackUrl = Model.CallbackUrl;
 }
 
 <h1>Email Confirmed</h1>
 <p>Your email has been successfully confirmed. Welcome to our platform!</p>
+<a asp-controller="Account" asp-action="CompleteDetails"
+   asp-route-userId="@userId" asp-route-code="@Html.Raw(HttpUtility.UrlEncode(callbackUrl))">
+    Complete Your Details
+</a>
+
+
+
+

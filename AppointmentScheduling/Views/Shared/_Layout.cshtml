@@ -5,43 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AppointmentScheduling</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
     <link rel="stylesheet" href="//https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.5.1/main.min.css,npm/fullcalendar@5.5.0/main.min.css" />
     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.default-v2.min.css" />
     <link href="~/lib/select2/css/select2.css" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" /><!-- Load your custom styles AFTER Bootstrap's styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-inverse navbar-expand-sm navbar-toggleable-sm navbar box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-controller="Appointment" asp-action="Index">Appointments</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                   <partial name="_LoginPartial" />
-                </div>
-            </div>
+    <div class="nav__container">
+        <!-- Left navigation bar -->
+        <nav class="nav__left">
+            <!-- Left navigation links here -->
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+        <!-- Header in the center -->
+        <header class="nav__header">
+            <nav class="navbar navbar-inverse navbar-expand-sm navbar-toggleable-sm navbar box-shadow mb-3">
+                <!-- Your header content here -->
+                <div class="container">
+                    <!-- Move "Appointments" to the right navigation bar -->
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Appointment" asp-action="Index">Appointments</a>
+                            </li>
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Right navigation bar -->
+        <nav class="nav__right">
+            <!-- Right navigation links here -->
+        </nav>
+
+        <!-- Body content between navigation bars -->
+        <div class="nav__body">
+            <div class="container">
+                <main role="main" class="pb-3">
+                    <!-- Your main content/body here -->
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
+    <!-- Your footer code here -->
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - AppointmentScheduling - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <!-- Your footer content here -->
+                &copy; 2023 - AppointmentScheduling - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
         </div>
     </footer>
+
+    <!-- Your script links here -->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/menu-item.js" asp-append-version="true"></script>
     <script type="text/javascript" src="~/lib/select2/js/select2.full.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
@@ -50,5 +78,6 @@
     <script type="text/javascript" src="~/js/notify.min.js"></script>
     <script src="~/js/script-custom-calendar.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </body>
 </html>

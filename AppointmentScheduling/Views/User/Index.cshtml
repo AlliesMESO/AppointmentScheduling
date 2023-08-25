@@ -1,0 +1,42 @@
+﻿@model List<ApplicationUser> // Adjust the namespace and model type accordingly
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Use the appropriate layout
+}
+
+<div class="container">
+    <h1>Registered Users</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Active Appointments</th>
+                <th>User active</th>
+                <th>User Id</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>@user.Id</td>
+                    <td>@Html.ActionLink("Edit", "CompleteDetails", "User",new { userId = user.Id }, htmlAttributes:null )</td>
+                    <!-- Add more columns if needed -->
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

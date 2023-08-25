@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Web;
 
 namespace AppointmentScheduling.Controllers
 {
+
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -91,7 +93,6 @@ namespace AppointmentScheduling.Controllers
                     Email = model.Email,
                     Name = model.Name
                 };
-
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -100,11 +101,12 @@ namespace AppointmentScheduling.Controllers
                     var callBackUrl = await SendEmailConfirmationTokenAsync(user, "Confirmation email");
 
 
-                    ViewBag.ErrorTitle = "Registration successful";
-                    ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
-                            "email, by clicking on the confirmation link we have emailed you";
+                    //ViewBag.ErrorTitle = "Registration successful";
+                    //ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
+                    //        "email, by clicking on the confirmation link we have emailed you";
 
-
+                    // Redirect to another action that displays a success message
+                    return RedirectToAction("RegistrationSuccess");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -114,12 +116,17 @@ namespace AppointmentScheduling.Controllers
             return View(model);
         }
 
+        public IActionResult RegistrationSuccess()
+        {
+            return View();
+        }
+
         private async Task<string> SendEmailConfirmationTokenAsync(ApplicationUser user, string subject)
         {
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = token }, protocol: HttpContext.Request.Scheme);
-            await _emailSender.SendEmailAsync(user.Email, subject, "Please confirm your account by <a href=\"" + callbackUrl + "\">clicking here</a>");
+            var callbackUrl = Url.Action("CompleteDetails", "User", new { userId = user.Id, code = token }, protocol: HttpContext.Request.Scheme);
+            await _emailSender.SendEmailAsync(user.Email, subject, "Please complete your registration by <a href=\"" + callbackUrl + "\">clicking here</a>");
             return callbackUrl;
         }
 
@@ -196,5 +203,13 @@ namespace AppointmentScheduling.Controllers
         {
             return View();
         }
+
+        public IActionResult SignOut()
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
     }
+
+
 }

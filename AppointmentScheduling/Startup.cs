@@ -32,7 +32,8 @@ namespace AppointmentScheduling
         {
             services.AddDbContext<ApplicationDbContext>
               (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation(); //dev.mode
+            services.AddRazorPages();//Dev.Mode
             services.AddTransient<IAppointmentService, AppointmentService>();
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             services.AddDistributedMemoryCache();
@@ -77,6 +78,10 @@ namespace AppointmentScheduling
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                name: "account",
+                pattern: "{controller=Account}/{action=CompleteDetails}/{userId}/{code}");
             });
         }
     }

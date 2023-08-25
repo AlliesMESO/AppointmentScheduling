@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/site.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <button class="header__button" id="btnNav" type="button">
+            <i class="material-icons">menu</i>
+        </button>
+    </header>
+    <nav class="nav">
+        <div class="nav__links">
+            <div class="nav__link">
+                <i class="material-icons">dashboard</i>
+                Dashboard
+                <div class="subcategories">
+                    <a href="#" class="subcategories__link">Subcategory 1</a>
+                    <a href="#" class="subcategories__link">Subcategory 2</a>
+                    <!-- Add more subcategory links as needed -->
+                </div>
+            </div>
+            <a class="nav__link nav__link--active" href="#">
+                <i class="material-icons">source</i>
+                Projects
+            </a>
+            <a class="nav__link" href="#">
+                <i class="material-icons">lock</i>
+                Security
+            </a>
+            <a class="nav__link" href="#">
+                <i class="material-icons">history</i>
+                History
+            </a>
+            <a class="nav__link" asp-controller="Account" asp-action="UserProfile">
+                <i class="material-icons">person</i>
+                Profile
+            </a>
+        </div>
+        <div class="nav__overlay"></div>
+    </nav>
+</body>
+</html>
