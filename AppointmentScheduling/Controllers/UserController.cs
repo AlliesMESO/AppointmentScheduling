@@ -1,5 +1,6 @@
 ﻿using AppointmentScheduling.Models;
 using AppointmentScheduling.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -80,8 +81,8 @@ namespace AppointmentScheduling.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public IActionResult UserProfile()
+        [Authorize]
+        public IActionResult Profile()
         {
             return View();
         }

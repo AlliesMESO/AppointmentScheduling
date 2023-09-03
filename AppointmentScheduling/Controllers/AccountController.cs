@@ -64,7 +64,7 @@ namespace AppointmentScheduling.Controllers
                     {
                         HttpContext.Session.SetString("ssuserName", user.Name);
                         //var userName = HttpContext.Session.GetString("ssuserName");
-                        return RedirectToAction("Index", "Appointment");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 else
@@ -202,11 +202,6 @@ namespace AppointmentScheduling.Controllers
         public IActionResult WelcomePage()
         {
             return View();
-        }
-
-        public IActionResult SignOut()
-        {
-            return RedirectToAction("Login", "Account");
         }
 
     }
