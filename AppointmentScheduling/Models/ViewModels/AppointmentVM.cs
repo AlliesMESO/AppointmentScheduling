@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppointmentScheduling.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,5 +23,7 @@ namespace AppointmentScheduling.Models.ViewModels
         public string PatientName { get; set; }
         public string AdminName { get; set; }
         public bool IsForClient { get; set; }
+        public IAppointmentService AppointmentService { get; set; }
+        // Other properties if needed
     }
 }

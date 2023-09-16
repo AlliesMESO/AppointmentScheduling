@@ -2,6 +2,7 @@
 using AppointmentScheduling.Models.ViewModels;
 using AppointmentScheduling.Utility;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -164,5 +165,25 @@ namespace AppointmentScheduling.Services
                 IsDoctorApproved = c.IsDoctorApproved
             }).ToList();
         }
+
+        //public bool HasActiveAppointments(string userId)
+        //{
+        //    // Retrieve the ApplicationUser object based on the provided userId
+        //    ApplicationUser user = _db.Users.FirstOrDefault(u => u.Id == userId);
+
+        //    // Check if the user is not null
+        //    if (user != null)
+        //    {
+        //        // Your logic to determine if the user has active appointments
+        //        // For example, you can check if there are any active appointments associated with the user in your database
+        //        var hasActiveAppointments = _db.Appointments
+        //            .Any(a => a.DoctorId == user.Id && a.Status == "Active");
+
+        //        return hasActiveAppointments;
+        //    }
+
+        //    // Handle the case where the user is not found (e.g., return false or handle it as needed)
+        //    return false;
+        //}
     }
 }

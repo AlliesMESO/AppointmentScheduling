@@ -1,0 +1,59 @@
+﻿led-animations.css
+
+.led-container {
+    width: 10px; /* Adjust the width as needed */
+    height: 10px; /* Adjust the height as needed */
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px; /* Add some spacing between LEDs */
+}
+
+.led {
+    width: 10px; /* Adjust the width as needed */
+    height: 10px; /* Adjust the height as needed */
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px;
+    margin-right: 5px; /* Add some spacing between LEDs */
+    animation-duration: 0.5s; /* Adjust the animation duration as needed */
+    animation-timing-function: ease-in-out; /* Adjust the timing function as needed */
+    animation-iteration-count: infinite;
+}
+
+
+.led-red {
+    background-color: #F00;
+    animation-name: blinkRed;
+}
+
+.led-green {
+    background-color: #ABFF00;
+    animation-name: blinkGreen;
+}
+
+.led-inactive {
+    background-color: #363636; /* Adjust the color for the inactive state */
+    box-shadow: none;
+}
+
+@keyframes blinkGreen {
+    from {
+        box-shadow: 0 0 4px #ABFF00, 0 0 6px #ABFF00, inset 0 0 4px #ABFF00, inset 0 0 6px #ABFF00;
+    }
+
+    to {
+        box-shadow: none;
+    }
+}
+
+/* Add this animation at the end of your CSS file */
+
+@keyframes blinkRed {
+    from {
+        box-shadow: 0 0 4px #F00, 0 0 6px #F00, inset 0 0 4px #F00, inset 0 0 6px #F00;
+    }
+
+    to {
+        box-shadow: none;
+    }
+}

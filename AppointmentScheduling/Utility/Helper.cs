@@ -39,9 +39,9 @@ namespace AppointmentScheduling.Utility
                 {
                     new SelectListItem{Value=Helper.Patient,Text=Helper.Patient},
                     new SelectListItem{Value=Helper.Doctor,Text=Helper.Doctor},
-                  //  new SelectListItem{Value=Helper.Admin,Text=Helper.Admin} //Enable to  register Admin
+                    /*new SelectListItem{Value=Helper.Admin,Text=Helper.Admin}*/ //Enable to  register Admin manually
                 };
-            }
+            } 
         }
 
         public static List<SelectListItem> GetTimeDropDown()

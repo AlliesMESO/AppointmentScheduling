@@ -16,19 +16,21 @@ namespace AppointmentScheduling.Models.ViewModels
         [Range(10, 300, ErrorMessage = "You must be between 10 and 300 years to progress")]
         public int Age { get; set; }
 
-        public enum Gender
-        {
-            Male,
-            Female,
-            Other
-        }
+       
 
         [Required(ErrorMessage = "Gender specification must be declared.")]
-        public Gender UserGender { get; set; }
+        public string Gender { get; set; }
 
         [Required(ErrorMessage = "A valid ID number is required")]
         [Display(Name = "ID Number")]
         public string IdNumber { get; set; }
-        public string Identification { get; set; }
+
+        [Required]
+        [Display(Name = "Workplace")]
+        public string Workplace { get; set; }
+
+        [Required]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
     }
 }

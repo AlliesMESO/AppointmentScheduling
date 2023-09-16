@@ -1,9 +1,11 @@
 ﻿@model List<ApplicationUser> // Adjust the namespace and model type accordingly
+@using AppointmentScheduling.Models;
 
 @{
     ViewData["Title"] = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml"; // Use the appropriate layout
 }
+
 
 <div class="container">
     <h1>Registered Users</h1>
@@ -17,7 +19,6 @@
                 <th>Age</th>
                 <th>Active Appointments</th>
                 <th>User active</th>
-                <th>User Id</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -27,12 +28,18 @@
                 <tr>
                     <td>@user.Name</td>
                     <td>@user.Email</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>@user.Id</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.Gender</td>
+                    <td>@user.Age</td>
+                    <td style="text-align: center; vertical-align: middle;">
+                        <div class="led-container">
+                            <div class="led led-green led-inactive"></div>
+                            <div class="led led-red led-inactive"></div>
+
+                        </div>
+                    </td>
+                    <!-- Other table cells -->
+                    <td></td>        
                     <td>@Html.ActionLink("Edit", "CompleteDetails", "User",new { userId = user.Id }, htmlAttributes:null )</td>
                     <!-- Add more columns if needed -->
                 </tr>
