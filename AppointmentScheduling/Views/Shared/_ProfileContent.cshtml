@@ -16,8 +16,8 @@
             </div>
             <div class="modal-body">
 
-                <!-- Your form for uploading the profile picture can go here -->
-                <form id="profilePictureForm" enctype="multipart/form-data" method="post" asp-controller="User" asp-action="Profile">
+                <!-- Your form for uploading the profile picture here -->
+                <form id="profilePictureForm" enctype="multipart/form-data" method="post" action="@Url.Action("UploadProfilePicture", "User")">
                     <div class="form-group">
                         <label for="profilePicture">Select a file:</label>
                         <input type="file" class="form-control" id="profilePicture" name="profilePicture">
@@ -46,10 +46,22 @@
 
                             <!-- User avatar and details -->
                        
-                        <img id="profilePicture" src="@Model.ProfilePicturePath" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px;">
-                        @*   <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="User avatar"
+                        <!-- Profile Picture -->
+                        <!-- Display the profile picture if ProfilePicturePath is not empty -->
+
+                        @if (!string.IsNullOrEmpty(Model.ProfilePicturePath))
+                        {
+                            <img id="profilePictureImage" src="@Model.ProfilePicturePath" alt="Profile Picture" class="rounded-circle img-fluid" style="width: 150px;">
+                        }
+                        else
+                        {
+                            <!-- Display the default profile picture if ProfilePicturePath is empty -->
+                            <img src="/profilepictures/default-profile-picture.jpg" alt="Default Profile Picture" class="rounded-circle img-fluid" style="width: 150px;">
+                        }
+
+                        @*<img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="User avatar"
                                  class="rounded-circle img-fluid" style="width: 150px;">*@
-                            <button type="button" class="btn btn-primary" id="uploadbutton">+</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal" id="uploadbutton">+</button>
 
 @*                                                <button class="add-button">+</button> 
 *@
@@ -280,18 +292,3 @@
 <!-- Include the necessary JavaScript and jQuery libraries if not already included -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JavaScript code -->
-
-@*<script>
-    console.log("project.js is being accessed.");
-
-    $(document).ready(function () {
-        // Show the modal when the '+' button is clicked
-        $('#uploadbutton').click(function () {
-            $('#uploadModal').modal('show');
-        });
-
-        // Rest of your code...
-    });
-</script>*@

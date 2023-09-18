@@ -15,6 +15,7 @@
     @*<partial name="_ProfileContent" model="@Model" />*@  @*You can alternatively use the 'PartialName'*@
     
         @await Html.PartialAsync("_ProfileContent", Model)
-   
+    <a asp-controller="User" asp-action="UploadProfilePicture">Upload Profile Picture</a>
+
 </body>
 </html>     

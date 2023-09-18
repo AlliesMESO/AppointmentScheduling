@@ -1,4 +1,6 @@
-﻿console.log("project.js is being accessed.");
+﻿
+
+console.log("project.js is being accessed.");
 $(document).ready(function () {
     // Show the modal when the '+' button is clicked
         // Function to show the modal when the '+' button is clicked
@@ -25,15 +27,18 @@ $(document).ready(function () {
             processData: false,
             contentType: false,
             success: function (data) {
-                // Handle the success response, e.g., update the user's profile picture
-                // and close the modal
+
+
+                                           // Handle the success response, e.g., update the user's profile picture
+                                         // and close the modal
                 if (data.success) {
                     console.log("Image URL: " + data.imageUrl);
 
                     // Update the user's profile picture on the page
-                    var imageUrl = data.imageUrl; // The URL returned in the data object
                     $('#profilePictureImage').attr('src', imageUrl);
 
+
+                    //++++++++++++Redirect to the Profile page-------------
                     // Show the success message
                     // Display a success message
                     //document.getElementById("uploadMessage").innerText = "Profile picture uploaded."; //uncomment
@@ -43,14 +48,31 @@ $(document).ready(function () {
                     //    $('#uploadSuccessMessage').fadeOut('fast'); // Hide the message after a few seconds
                     //}, 3000); // Adjust the time as needed
 
-                    // Redirect to the Profile page
-                    window.location.replace('/User/Profile'); // Replace with the correct URL if needed
+                    //--------------Redirect to the Profile page++++++++++++++++
+
+
+                    //0000000000000000Show a success message (you can customize this part)000000000000000
+
+                    alert("Profile picture uploaded successfully!");
+
+
+                    // Redirect to the Profile page after a brief delay
+                    setTimeout(function () {
+                        window.location.replace('/User/Profile'); // Replace with the correct URL if needed
+                    }, 1000); // Adjust the delay time as needed
                 }
+
+
                 
             },
             error: function () {
-                //Handle error here
+                //0000000000000000000000000000 Handle error here (e.g., display an error message)0-
+                alert("An error occurred during the upload.");
             }
         });
+    });
+    $('#uploadbutton').click(function () {
+        console.log("Upload button clicked!");
+        $('#uploadModal').modal('show');
     });
 });

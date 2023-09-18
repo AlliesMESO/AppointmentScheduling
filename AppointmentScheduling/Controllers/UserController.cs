@@ -6,11 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.Web.CodeGeneration;
 using System;
 using System.IO; //This line to include the System.IO namespace
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using AppointmentScheduling.Repositories; // Adjust to your actual namespace
 
@@ -110,110 +108,6 @@ namespace AppointmentScheduling.Controllers
             return View(model);
         }
 
-        [Authorize]
-        public async Task<IActionResult> Profile()
-        {
-            // Get the currently logged-in user
-            var user = await _userManager.GetUserAsync(User);
-
-            // Check if the user is authenticated
-
-            if (user != null)
-            {
-                // Create an instance of UserProfileVM and populate it with the user's data
-                // Populate the UserProfileVM model here
-
-                var userProfile = new UserProfileVM
-                {
-                    Name = user.Name,  // Replace with the property that holds the user's full name
-                    Email = user.Email,    // Replace with the property that holds the user's email
-                    PhoneNumber = user.PhoneNumber,
-                    Age = user.Age, // Populate Age property
-                    Gender = user.Gender, // Populate Gender property
-                    Workplace = user.Workplace,
-                    Address = user.Address
-
-                    // Populate other properties as needed
-                };
-
-                // Retrieve the user's profile data, including the profile picture path
-                // Replace this with your logic to get the user's profile picture path
-                userProfile.ProfilePicturePath = GetUserProfilePicturePath(user.Id);
-
-
-                // Pass the userProfile object to the view
-                return View(userProfile);
-            }
-
-            // Handle the case where the user is not authenticated
-            // You can redirect them to the login page or perform some other action
-            return RedirectToAction("Login", "Account"); // Redirect to login page as an example
-        }
-
-        [HttpPost]
-        public IActionResult UploadProfilePicture(IFormFile profilePicture)
-        {
-            if (profilePicture != null && profilePicture.Length > 0)
-            {
-                try
-                {
-                    // Generate a unique filename (e.g., using a GUID)
-                    //var uniqueFileName = Guid.NewGuid().ToString() + "_" + profilePicture.FileName;
-
-                    // Generate a unique filename (e.g., user_id_timestamp.jpg)
-                    var userId = User.Identity.Name; // Replace with your user identifier
-                    var fileName = $"{User.Identity.Name}_{DateTime.Now.Ticks}.jpg";
-
-
-                    // Generate a unique directory name for the user
-                    var userDirectoryName = $"{userId}_{DateTime.Now.Ticks}";
-
-                    // Define the base directory where user-specific profile pictures will be stored
-                    var baseProfilePicturesPath = Path.Combine(_webHostEnvironment.WebRootPath, "profile_pictures");
-
-                    // Combine the base directory with the user-specific directory
-                    var userDirectoryPath = Path.Combine(baseProfilePicturesPath, userDirectoryName);
-
-                    // Create the user's directory if it doesn't exist
-                    if (!Directory.Exists(userDirectoryPath))
-                    {
-                        Directory.CreateDirectory(userDirectoryPath);
-                    }
-                    // Upload the file to your chosen storage location (e.g., server or cloud)
-                    // Update the database record to point to the new file (e.g., update the file path in the user's profile)
-
-
-                    // Define the path where you want to save the uploaded file
-                    //var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "profile_pictures", fileName);
-                    // Define the full file path
-                    var filePath = Path.Combine(userDirectoryPath, fileName);
-
-
-                    // Save the file to the server
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        profilePicture.CopyTo(stream);
-                    }
-
-                    // Update the user's profile in the database with the new file path
-                    // Replace with your user identifier
-                    // UpdateUserProfilePicture(userId, filePath);
-
-                    // Return a JSON response with the success status and image URL
-                    return Json(new { success = true, imageUrl = $"/profile_pictures/{userDirectoryName}/{fileName}" });
-                }
-                catch (Exception ex)
-                {
-                    // Log the error or handle it appropriately
-                    _logger.LogError(ex, "An error occurred while uploading the profile picture.");
-
-                    // Handle the error and return an appropriate JSON response
-                    return Json(new { success = false, errorMessage = "An error occurred while uploading the file." });
-                }
-
-            }
-            return Json(new { success = false, errorMessage = "No File uploaded." });
-        }
 
         // Add a method to retrieve the user's profile picture path
         private string GetUserProfilePicturePath(string userId)
@@ -230,7 +124,116 @@ namespace AppointmentScheduling.Controllers
 
             // Handle the case where the user's profile picture path is not found
             // You can return a default path or empty string
-            return "/path/to/default/profile-picture.jpg"; // Replace with your default image path
+            return "/profilepictures/default-profile-picture.jpg"; // replace with your default image path
+        }
+
+        [Authorize] //Authorize attribute
+        public async Task<IActionResult> Profile()
+        {
+            try
+            {
+                // Get the currently logged-in user
+                var user = await _userManager.GetUserAsync(User);
+
+
+
+                // Check if the user is authenticated
+
+                if (user != null)
+                {
+                    // Create an instance of UserProfileVM and populate it with the user's data
+                    // Populate the UserProfileVM model here
+
+                    var userProfile = new UserProfileVM
+                    {
+                        Name = user.Name,  // Replace with the property that holds the user's full name
+                        Email = user.Email,    // Replace with the property that holds the user's email
+                        PhoneNumber = user.PhoneNumber,
+                        Age = user.Age, // Populate Age property
+                        Gender = user.Gender, // Populate Gender property
+                        Workplace = user.Workplace,
+                        Address = user.Address,
+                        ProfilePicturePath = GetUserProfilePicturePath(user.Id) // Include the profile picture path
+                                                                                // Populate other properties as needed
+                    };
+                    // Pass the userProfile object to the view
+
+                    return View(userProfile);
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account");
+
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while loading the user's profile.");
+                return RedirectToAction("Login", "Account");
+            }
+              
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfilePicture(IFormFile profilePicture)
+        {
+            try
+            {
+                // Get the currently logged-in user
+                var user = await _userManager.GetUserAsync(User);
+
+                if (user != null && profilePicture != null && profilePicture.Length > 0)
+                {
+                    // Generate a unique filename (e.g., using a GUID)
+                    var fileName = $"{user.Id}_{DateTime.Now.Ticks}.jpg";
+
+                    // Generate a unique directory name for the user
+                    var userDirectoryName = $"{user.Id}_{DateTime.Now.Ticks}";
+
+                    // Define the base directory where user-specific profile pictures will be stored
+                    var baseProfilePicturesPath = Path.Combine(_webHostEnvironment.WebRootPath, "profilepictures");
+
+                    // Combine the base directory with the user-specific directory
+                    var userDirectoryPath = Path.Combine(baseProfilePicturesPath, userDirectoryName);
+
+                    // Create the user's directory if it doesn't exist
+                    if (!Directory.Exists(userDirectoryPath))
+                    {
+                        Directory.CreateDirectory(userDirectoryPath);
+                    }
+
+                    // Define the full file path
+                    var filePath = Path.Combine(userDirectoryPath, fileName);
+
+                    // Save the file to the server
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await profilePicture.CopyToAsync(stream);
+                    }
+
+                    // Update the user's profile in the database with the new file path
+                    user.ProfilePicturePath = $"/profilepictures/{userDirectoryName}/{fileName}";
+
+                    // Save the changes to the database
+                    await _userManager.UpdateAsync(user); // Update the user using UserManager
+
+                    // Redirect to the ProfileContent action
+                    return RedirectToAction("Profile");
+                }
+                else
+                {
+                    return Json(new { success = false, errorMessage = "No File uploaded or user not authenticated." });
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                _logger.LogError(ex, "An error occurred while uploading the profile picture.");
+
+                // Handle the error and return an appropriate JSON response
+                return Json(new { success = false, errorMessage = "An error occurred while uploading the file." });
+            }
+        
         }
     }
 }   
