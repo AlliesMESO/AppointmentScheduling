@@ -35,7 +35,7 @@ $(document).ready(function () {
                     console.log("Image URL: " + data.imageUrl);
 
                     // Update the user's profile picture on the page
-                    $('#profilePictureImage').attr('src', imageUrl);
+                    $('#profilePictureImage').attr('src', data.imageUrl);
 
 
                     //++++++++++++Redirect to the Profile page-------------
