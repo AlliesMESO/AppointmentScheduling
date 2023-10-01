@@ -7,11 +7,19 @@
 <head>
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/stylesSheet.css">
+    
+
+    <link rel="stylesheet" type="text/css" href="~/css/police-lights.css">
+    <!-- Include your external JavaScript file -->
+    <script src="/js/police-lights.js"></script>
     <script src="js/script.js"></script>
 </head>
 <body>
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
+    <!-- Include the police lights animation here -->
+    <div>
+        <!-- Include the _PoliceLights.cshtml partial view asynchronously -->
+        @await Html.PartialAsync("_PoliceLights")
     </div>
+    <h1>Welcome to AtomMatrix</h1>
 </body>
 </html>

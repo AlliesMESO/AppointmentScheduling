@@ -1,0 +1,46 @@
+﻿/* Neon effect for social media icons */
+.neon-icon {
+    font-size: 1em;
+    background-color: transparent;
+    color: #fff;
+    box-shadow: 2px 2px 2px #00000080, 10px 1px 12px #00000080, 2px 2px 10px #00000080, 2px 2px 3px #00000080, inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080;
+    border-radius: 29px;
+    padding: 11px 19px;
+    margin: 0 40px;
+    animation: neon 3s linear infinite;
+}
+
+/* Instagram with animation delay */
+.instagram-icon {
+    animation-delay: 0.3s;
+}
+
+/* Twitter with animation delay */
+.twitter-icon {
+    animation-delay: 0.6s;
+}
+
+/* Facebook with animation delay */
+.facebook-icon {
+    animation-delay: 0.9s;
+}
+
+/* LinkedIn with animation delay */
+.linkedin-icon {
+    animation-delay: 1.2s;
+}
+
+/* TikTok with animation delay */
+.tiktok-icon {
+    animation-delay: 1.5s;
+}
+
+@keyframes neon {
+    from {
+        filter: hue-rotate(0deg);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}

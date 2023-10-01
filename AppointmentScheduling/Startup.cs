@@ -103,7 +103,7 @@ namespace AppointmentScheduling
                 pattern: "Profile/UploadProfilePicture", // Adjust this route to match your application's structure
                defaults: new { controller = "User", action = "UploadProfilePicture" });
 
-
+                // Add other endpoints as needed
             });
         }
     }
