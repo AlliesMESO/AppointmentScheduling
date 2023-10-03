@@ -3,8 +3,12 @@ for details on configuring this project to bundle and minify static web assets. 
 
 /* Adjust the position of the navigation bar */
 .navbar {
-    position: relative; /* Ensure relative positioning */
-    margin-top: 60px; /* Adjust the value as needed */
+    position: fixed; /* Fixed position to stay on the right side */
+    top: 0; /* Stick to the top */
+    right: 0; /* Align to the right side */
+    height: 100%; /* Take the full vertical height */
+    width: 250px; /* Set the desired width */
+    padding: 20px; /* Add some padding */
     z-index: 99; /* Set a lower z-index value than the lights */
 }
 a.navbar-brand {
@@ -12,6 +16,37 @@ a.navbar-brand {
     text-align: center;
     word-break: break-all;
 }
+
+.navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between links */
+    height: 100%; /* Take the full height of the navbar */
+}
+
+/* Style the navbar links */
+.navbar-nav .nav-item {
+    width: 100%; /* Ensure the links take full width of the navbar */
+    text-align: center; /* Center the link text */
+}
+
+/* Move the partial name to the top */
+#partialName {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #343a40; /* Background color of the navbar */
+    padding: 10px; /* Add some padding for spacing */
+    z-index: 1; /* Ensure it's above other elements in the navbar */
+}
+
 
 /* Provide sufficient contrast against white background */
 a {
@@ -108,9 +143,7 @@ body {
     margin: 5px 0px 0px -20px !important;
 }
 
-.navbar-collapse {
-    padding-left: 0px !important;
-}
+
 
 .select2-container {
     width: 100% !important
