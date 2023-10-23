@@ -7,19 +7,56 @@
 <head>
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/stylesSheet.css">
-    
+
 
     <link rel="stylesheet" type="text/css" href="~/css/police-lights.css">
+
     <!-- Include your external JavaScript file -->
     <script src="/js/police-lights.js"></script>
     <script src="js/script.js"></script>
+
 </head>
+
+
 <body>
+
+
+
+
     <!-- Include the police lights animation here -->
     <div>
         <!-- Include the _PoliceLights.cshtml partial view asynchronously -->
         @await Html.PartialAsync("_PoliceLights")
     </div>
     <h1>Welcome to AtomMatrix</h1>
+
+
+    <!-- Communication button -->
+    <div class="communication-icon" id="communication">
+        
+            <div class="communicate-icon">
+            <i class="fa-thin fa-message-dots" title="Chats"></i> <!-- Icon for Chats -->
+            <i class="fa-duotone fa-envelope-open-text" title="Email"></i> <!-- Icon for Email -->
+            </div>
+            <span>
+                <!-- Wrap the Communicate text in a <span> element -->
+                <i class="fa-thin fa-head-side-cough"></i> <!-- Communicate Icon -->
+                Communicate
+            </span>
+        
+    </div>
+
+
+
+
+
+
+
+  
+
+
+
 </body>
+
+
 </html>
