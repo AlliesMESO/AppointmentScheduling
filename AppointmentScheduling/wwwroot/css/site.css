@@ -3,14 +3,15 @@ for details on configuring this project to bundle and minify static web assets. 
 
 /* Adjust the position of the navigation bar */
 .navbar {
-    position: fixed; /* Fixed position to stay on the right side */
+    position: relative; /* Fixed position to stay on the right side */
     top: 0; /* Stick to the top */
     right: 0; /* Align to the right side */
-    height: 100%; /* Take the full vertical height */
+    height: 50%; /* Take the full vertical height */
     width: auto; /* Set the desired width  120px*/
     padding: 5px 20px; /* Add some padding */
     z-index: 99; /* Set a lower z-index value than the lights */
-    background-color: rgb(0, 0, 0) /*!important*/; /* Change to black using rgb(0, 0, 0) */
+    background-color: black !important; /*!important*/
+    ; /* Change to black using rgb(0, 0, 0) */
 }
 
 a.navbar-brand {
@@ -57,36 +58,33 @@ a.navbar-brand {
 
 
 
-/* Adjust the position and style of the center element */
+/* Adjust the position and style of the center element */ /*SECOND/third BOTTOM HORIZONTAL LINE*/
 #partialName {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -90%);
-    background-color: rgb(0, 0, 0) !important;
-    padding: 10px;
-    z-index: 1;
-    font-size: 26px;
-    height: 100px;
-    width: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    position: fixed;
+    bottom: 30px; /*fix----------------------------eeeeeeeeeeeeeeeeeeeeeeeeerrrrrrrrrrrrrrrrr------------======================*/
+    left: 0;
+    right: 0;
+    background: red !important; /*Set the desired background color */
+    padding: 10px;
+    transition: all 0.3s; /* Add a transition for smooth effects */
 }
 
     /* Style the buttons */
     #partialName a {
         color: #fff;
-        margin-right: 700px; /* Add spacing between buttons */
-        text-decoration: none;
     }
 
     /* Style the icons within the element */
     #partialName i {
-        font-size: 24px; /* Adjust icon size as needed */
-        margin-right: 26px; /* Add spacing between icons */
+        font-size: 54px; /* Adjust icon size as needed */
+        margin-right: 10px; /* Add spacing between icons */
         color: white; /* Icon color */
     }
+
+
 /* Provide sufficient contrast against white background */
 a {
     color: #0366d6;
@@ -148,14 +146,29 @@ body {
 }
 
 .footer {
-    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
     bottom: 0;
     width: 100%;
-    height: 40px; /* Adjust the height of the footer as needed */
-    background-color: rgb(0, 0, 0) !important;
+    background-color:black !important;
     color: #fff;
     text-align: center;
     line-height: 40px; /* Vertically center the text */
+    align-items: center;
+}
+
+/*----------------------------------------------------------------<               Log off button                        >-----------------------------------------------*/
+.solar-panel {
+    position: fixed;
+    font-size: 44px; /* Adjust the desired font size */
+    bottom: 0px; /* Adjust the distance from the bottom */
+    left: 10px; /* Adjust the distance from the left */
+}
+
+
+.footer-content {
+    flex-grow: 1;
 }
 
 .error {
@@ -308,58 +321,228 @@ body {
 
 #partialName .custom-icon {
     font-size: 910px;
-    /*    margin: 0;
-*/
+    margin: 0;
+}
+
+#communication-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.user-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.user-action {
+    position: relative;
+}
+
+.sign-in-text {
+    margin-right: 5px; /* Adjust this margin as needed */
+}
+
+
+.log-off-text {
+    display: none; /* Hide the "Log off" text initially */
+    position: absolute;
+    top: -110px; /* Adjust this value to move the "Log off" text up */
+    left: 50%;
+    transform: translateX(1002px);
+    transform: translateX(-10%);
+    transition: opacity 0.3s; /* Add opacity transition */
+}
+
+.user-action:hover .log-off-text {
+    display: inline; /* Display the "Log off" text when hovering over the user-action div */
+}
+
+
+.center-icon {
+    vertical-align: middle;
+    cursor: pointer; /* Add a pointer cursor on hover */
+}
+
+
+
+/*--------------------------------------------------------------<USER NAME CONTAINER(ABOVE THE FOOTER/PARALLEL TO THE FOOTER>-------------------------------------*/
+
+.user-info {
+    margin: -25px;
+    transition: opacity 0.3s; /* Add opacity transition */
+    margin-top: -4px; /* Adjust the desired margin to move it down */
+}
+
+#goodbyeMessage {
+    display: none;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
 }
 
 
 /* --------00000000---------------------------------------------<0  hover effect to the icon container   0>+++++++++00000000000000000000000000++++++++++++++++++++ */
 
-                                                                  /********  hover effect element *********/
+/********  hover effect element *********/
 /* Style for the Communication Text/Button */
 .communication-icon {
-    text-align: center; /* Align the text and icons to the center */
-    padding: 10px 20px; /* Adjust padding as needed */
-    position: fixed;
-    top: 15%;
-    left: 0; /* Position the button on the left */
-    transform: translate(0, -50%);
-    background-color: #000; /* Background color */
-    color: #fff; /* Text color */
+    position: relative;
+    display: inline-block;
+    text-align: center;
     cursor: pointer;
-    z-index: 2;
-    height: 40px; /* Set a fixed height to prevent movement */
+    z-index: 1;
 }
 
     /* Style for the icons */
-.communication-icon .communicate-icon {
-    font-size: 20px; /* Adjust the icon size as needed */
-    color: #333; /* Set your icon color for Chats and Email */
-    margin: 5px; /* Add some margin to separate the icons */
-    margin-bottom: -10px; /* Move the icons up by 10 pixels, right above the text */
-    position: relative;
-    transition: transform 0.5s ease, opacity 0.5s ease; /* Add a smooth transition effect */
-    opacity: 0; /* Set opacity to 0 to make the icons initially invisible */
-}
+    .communication-icon .communicate-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 59px; /* Adjust the icon size as needed */
+        color: #333; /* Set your icon color for Chats and Email */
+        margin: 5px; /* Add some margin to separate the icons */
 
-/* Adjust the margin-right for the second icon to add space */
-.communication-icon .communicate-icon i:nth-child(2) {
-    margin-right: 10px; /* Add space to separate the icons */
-}
+        margin-bottom: 5px; /* Add spacing between icons and the text */
+        /* Move the icons up by 10 pixels, right above the text */
+        position: absolute;
+        transition: transform 0.5s ease, opacity 0.5s ease; /* Add a smooth transition effect */
+        opacity: 0; /* Set opacity to 0 to make the icons initially invisible */
+        top: -20px; /* Position the icons at the head of the cough icon */
+        left: 50%; /* Position them at the horizontal center of the cough icon */
+        transform: translateX(-50%); /* Center horizontally */
+    }
 
-/* Pop out the icons vertically on hover */
-.communication-icon:hover .communicate-icon {
-    transform: translateY(0) translateX(15px); /* Return the icons to their normal position */
-    opacity: 1; /* Make the icons visible on hover */
-}
+
+        /* Adjust the margin-right for the second icon to add space */
+        .communication-icon .communicate-icon i:nth-child(2) {
+            margin-left: 10px; /* Add space to the left of the second icon */
+        }
+
+    /* Pop out the icons vertically on hover */
+    .communication-icon:hover .communicate-icon {
+        transform: translateY(30px) translateX(-165px); /*70 -65 Return the icons to their normal position */
+        opacity: 1; /* Make the icons visible on hover */
+    }
 
 
     /* Style for the cough icon */
     .communication-icon .fa-thin.fa-head-side-cough {
-        font-size: 20px; /* Adjust the icon size as needed */
+        font-size: 60px; /* Adjust the icon size as needed */
         color: #333; /* Set your desired icon color */
         margin: 5px; /* Add some margin to separate the icons */
+        vertical-align: middle; /* Add this line */
+        position: fixed;
     }
 
 
+    /* Style for the "Communicate" text */
+    .communication-icon span {
+        position: relative;
+        top: 70px; /* Adjust the top value to move the text up */
+        left: 50px;
+    }
+
+/* Style the icon within the button */
+#fullscreenButton i {
+    font-size: 100px; /* Adjust the icon size as needed */
+    margin-right: 5px; /* Add spacing between the icon and text */
+    color: #000; /* Set the icon color to your desired color */
+}
+
+
+/* Hide the button text */
+#fullscreenButton {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative; /* Add this for the title to appear */
+}
+
+    /* Add a title on hover */
+    #fullscreenButton::before {
+        content: attr(title);
+        position: absolute;
+        bottom: -40px; /* Adjust the distance from the icon */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        background: rgba(0, 0, 0, 0.7); /* Adjust the background color */
+        color: #fff; /* Adjust the text color */
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: opacity 0.3s;
+    }
+
+
+    #fullscreenButton:hover::before {
+        opacity: 1;
+    }
+
+    #fullscreenButton i.fa-user-astronaut {
+        color: gray;
+    }
+
+
+/* Add the following CSS to your existing styles */
+
+.glow {
+    font-size: 3em; /* Adjust the size as needed */
+    color: #fff;
+    animation: glowAnimation 2s ease-in-out infinite;
+}
+
+/* Add or update the following CSS styles to handle the button states */
+.fullscreen-off .glow {
+    color: red; /* Initial color before clicking */
+}
+
+.fullscreen-on .glow {
+    color: green; /* Color when in fullscreen mode */
+}
+
+@keyframes glowAnimation {
+    0% {
+        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.75)) brightness(1.2);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 20px rgba(0, 255, 0, 1)) brightness(1.5);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.75)) brightness(1.2);
+    }
+}
+
+/* Apply the animation by default */
+#fullscreenButton i {
+    animation: glowAnimation 2s linear infinite;
+}
+
+/* Stop the animation and change color on hover */
+#fullscreenButton:hover i {
+    animation: none; /* Stop the animation on hover */
+    color: green; /* Change the color to green on hover */
+}
+
+
+/* Add this CSS to create a static green glow for the TV icon */
+.fa-tv-retro {
+    color: green;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+    animation: none; /* Remove animation */
+}
 

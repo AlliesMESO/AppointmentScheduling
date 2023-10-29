@@ -3,22 +3,21 @@
 /* BASICS */
 /* Position the police lights container at the top of the page */
 .police-lights-container-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    top: 0px;
+    left: 20px;
     width: 100%;
-    z-index: 100; /* Ensure the lights appear on top of other content */
+    z-index: 1; /* Ensure the lights appear on top of other content */
     background-color: transparent; /* Set to transparent background */
     text-align: center;
-    padding: 10px 0; /* Adjust the padding as needed */
-    transform: translateY(-25px); /* Adjust the value to move the lights up */
+    padding: 130px 220px; /* Adjust the padding as needed */
+    transform: translateY(-337px); /* Adjust the value to move the lights up */
 }
 
-body {
-    background-color: #000;
-    min-width: 980px;
-    padding: 10px 10px 250px;
-}
+
+
+
+
 
 h1 {
     font-family: "Rubik", sans-serif;
@@ -34,27 +33,33 @@ h1 {
 
 /* Style the police lights container */
 .police-lights-container {
-    text-align: center;
-    display: inline-block;
-    background-color: transparent; /* Set to transparent background */
-    padding: 10px;
-    /* Adjust the width and height to make the entire structure smaller */
-    width: 50%; /* You can adjust the percentage as needed */
-    height: auto; /* Auto height to maintain aspect ratio */
-    transform-origin: center; /* Center the scaling origin */
-    transform: scale(0.5); /* Adjust the scale factor as needed */
-    z-index: 1; /* Adjust the value as needed */
+    display: flex;
+    position: fixed;
+    justify-content: center; /* Place the updates and lightbar at opposite ends */
+    align-items: center;
+    background-color: blue;
+    width: 5%; /* Adjust the width as needed */
+    transform-origin: center;
+    transform: scale(0.5);
+    top: 120px;
+
 }
 /* LIGHT BAR ESSENTIALS */
 .lightbar {
     display: flex;
     position: relative;
-    padding: 4px 10px;
+    padding: 4px 100px;
     margin: 0 auto;
-    max-width: 945px;
+    max-width: 252px;
+    width: 50%; /* Set a fixed width in pixels */
+    height: 90px; /* Set a fixed height in pixels */
     border-radius: 3px;
     display: flex;
     justify-content: center;
+    background-color: black;
+     padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
     .lightbar:after {
@@ -67,14 +72,13 @@ h1 {
         width: 100%;
         height: 100%;
         border-radius: 3px;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.24) 1%, rgba(255, 255, 255, 0.14) 43%, rgba(255, 255, 255, 0) 58%, rgba(255, 255, 255, 0) 100%);
     }
 
 .light {
     position: relative;
-    width: 131px;
+    width: 10px;
     height: 80px;
-    padding: 5px 10px 4px;
+    padding: 5px 1px 4px;
     background-color: #222;
     border-top: 2px solid #111;
     border-right: 1px solid #333;
@@ -92,10 +96,10 @@ h1 {
 
 .inner-light {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 80%;
     background-color: transparent;
-    top: -1px;
+    top: 16px;
     left: -1px;
     border-radius: 6px;
     border: 1px solid transparent;
@@ -132,7 +136,7 @@ h1 {
 
 
 /* USER CONTROLS */
-.controls {
+/*.controls {
     margin: 100px auto 0;
     max-width: 945px;
 }
@@ -174,7 +178,7 @@ h1 {
 
         .controls button.active {
             background-color: #ddd;
-        }
+        }*/
 
 /* SPOTLIGHT */
 .spotlight .bulb {
@@ -1327,3 +1331,24 @@ h1 {
         opacity: 0;
     }
 }
+
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+/*@media screen and (max-width: 768px) {
+    .police-lights-container {
+        transform: scale(0.8);
+    }
+
+    .lightbar {
+        width: 350px;*/ /* Adjust the fixed width for smaller screens */
+        /*height: 600px;*/ /* Adjust the fixed height for smaller screens */
+    /*}
+}*/
+
+/*In the CSS code above, we have set fixed dimensions (width and height) for the lightbar element in pixels. This ensures that the traffic light remains static and does not scale with the zoom level. Adjust the width and height values as needed to match your design requirements.
+
+Please note that using fixed units for the entire traffic light will make it less responsive to different screen sizes. If you require full responsiveness while zooming, consider using relative units for the traffic light's size and position. However, this may lead to some distortion or changes in aspect ratio when zooming.*/
+
+
+
+
+

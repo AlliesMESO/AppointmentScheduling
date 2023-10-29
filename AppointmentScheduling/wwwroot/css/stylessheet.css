@@ -8,8 +8,8 @@ body {
     background-color: black;
 }
 
-     change background color of cards 
-.card.mb-4.mb-lg-0 {
+/*     change background color of cards 
+*/.card.mb-4.mb-lg-0 {
     background-color: black;  /*change this to the desired background color */
 }
 
@@ -18,8 +18,8 @@ body {
     background-color: black;
 }
 
- set the text color to white for user details 
-.card.mb-4,
+/* set the text color to white for user details 
+*/.card.mb-4,
 .list-group-item.d-flex.justify-content-between.align-items-center.p-3,
 .list-group-item a.neon-icon::placeholder {
     color: white;
@@ -28,15 +28,15 @@ body {
 
                                /*  apply the spinning animation to the globe icon */
 
-spinning icon and the animation
-
+/*spinning icon and the animation
+*/
 .spinning-icon {
     animation: spin 15s linear infinite; /* adjust the duration and timing function as needed */
 }
 
 
 
- apply the hover effect to social media icons 
+/* apply the hover effect to social media icons */
 .social-icons-container a {
     text-decoration: none;
     transition: transform 0.3s, filter 0.3s;
@@ -54,16 +54,18 @@ spinning icon and the animation
     }
 
 
-/* define a spinning animation */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
 
-    100% {
-        transform: rotate(360deg);
+
+    /* define a spinning animation */
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
     }
-}
  
 
 

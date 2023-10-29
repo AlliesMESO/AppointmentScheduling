@@ -1,0 +1,63 @@
+﻿/*body {
+}*/
+
+/* CSS */
+/*.hidden {
+    display: none;
+}*/
+
+
+/* Style the square box on top of the police lights */
+/*.square-box {
+    position: absolute;
+    top: 50px;*/ /* Adjust the top position as needed */
+    /*left: 50%;*/ /* Position in the middle of the parent container */
+    /*transform: translateX(-50%);*/ /* Center horizontally */
+    /*width: 1500px;*/ /* Adjust the width as needed */
+    /*height: 900px;*/ /* Adjust the height as needed */
+    /*background-color: #ffba13;*/ /* Set the background color of the square box */
+    /*z-index: 10000;*/ /* Place the square box on top of other elements */
+/*}*/
+
+/* Style the side boxes (left and right) */
+/*.side-box {
+    position: absolute;
+    top: 250px;
+    width: 30%;*/ /* Adjust the width as needed */
+    /*height: 100%;*/ /* Make the box cover the entire height */
+    /*background-color: #333;*/ /* Adjust the background color */
+    /*z-index: 1;*/ /* Place the boxes behind the police lights */
+/*}
+
+.left-box {
+    left: -20px;
+    width: 15%;*/ /* Adjust the width as needed */
+
+    /*height: 590px;*/ /* Set the desired height */
+/*}
+
+.right-box {
+    right: -599px !important;*/ /* Position the right box on the right side */
+    /*top: 50px;*/ /* Adjust the top position as needed */
+    /*width: 30% !important;*/ /* Adjust the width as needed */
+    /*height: 1194px;*/ /* Set the desired height */
+/*}
+
+.updates p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #ffd368;
+}*/
+
+/* Style the update text */
+/*.update-text {
+    position: absolute;
+    left: 74px;*/ /* Adjust the position as needed to place it next to the first light */
+    /*top: -40px;*/ /* Adjust the position to move the text up */
+    /*width: 360px;*/ /* Width of the text container */
+    /*background-color: #ddbd22;
+    padding: 10px;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}*/

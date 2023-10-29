@@ -2,56 +2,70 @@
 
 @if (signInManager.IsSignedIn(User))
 {
-    <form mwthod="post" id="logoutForm" asp-action="Logoff" asp-controller="Account">
+    <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Account">
 
-        <ul class="nav navbar-nav">
 
-            <li class="text-white nav-link">
+        
+
+            <div class="user-container">
+
+                
+
+                <div class="user-action">
+
+                    <a href="javascript:document.getElementById('logoutForm').submit()">
+
+
+
+                        <span class="log-off-text">
+
+                            Log off
+
+                        </span>
+
+
+                        <i class="fa-thin fa-solar-panel custom-size-icon center-icon solar-panel"></i>
+
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+                <div id="goodbyeMessage" style="display: none;">Goodbye</div>
+
+            <div class="user-info">
 
                 Hello, @User.Identity.Name!
 
-            </li>
-
-            <li>
-
-                <a class="text-white nav-link" href="javascript:document.getElementById('logoutForm').submit()">
-                    Log off
-
-                    <i class="fa-thin fa-solar-panel custom-size-icon" style="margin-left: 30px; vertical-align: middle;">
-
-                    </i>
-                </a>
-
-            </li>
-
-        </ul>
+            </div>
+        
 
     </form>
 }
 else
 {
-    <ul class="nav navbar-nav">
+    <div class="user-container">
 
-        <li class="nav-item">
-
-            @*<li>@Html.ActionLink("Sign Up", "Register", "Account", routeValues: null, htmlAttributes: new { id= "registerLink"})</li>*@
-
-            <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="Register">
-                <i class="fa-thin fa-atom-simple fa-spin fa-2xs"></i> Register
+        <div class="user-action">
+            <a id="registerLink" asp-controller="Account" asp-action="Register">
+                <i class="fa-thin fa-atom-simple fa-spin fa-2xs" style="margin-right: 5px;"></i>
+                Register
             </a>
+        </div>
 
-        </li>
-
-
-        @*<li>@Html.ActionLink("Sign In", "Login", "Account", routeValues: null, htmlAttributes: new { id= "LoginLink"})</li>*@
-
-        <li class="nav-item">
-
-            <a class="nav-link text-white" id="loginLink" asp-controller="Account" asp-action="Login">
-                <i class="fa-light fa-rocket-launch fa-shake"></i> Sign In
+        <div class="user-action">
+            <div class="sign-in-text">
+                Sign In
+            </div>
+            <a id="loginLink" asp-controller="Account" asp-action="Login">
+                <i class="fa-light fa-rocket-launch fa-shake" style="margin-right: 225px;"></i>
             </a>
+        </div>
 
-        </li>
 
-    </ul>
+    </div>
 }
+
