@@ -9,7 +9,7 @@ for details on configuring this project to bundle and minify static web assets. 
     height: 50%; /* Take the full vertical height */
     width: auto; /* Set the desired width  120px*/
     padding: 5px 20px; /* Add some padding */
-    z-index: 99; /* Set a lower z-index value than the lights */
+    z-index: 0; /* Set a lower z-index value than the lights ~~~~~~~~~~~~~~~~< SET TO 0 TO ACCOMODATE CHAT PAGE   >~~~~~~~~~~~~~~~*/
     background-color: black !important; /*!important*/
     ; /* Change to black using rgb(0, 0, 0) */
 }

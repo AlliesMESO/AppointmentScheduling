@@ -19,14 +19,42 @@ img {
   border-radius: 50%;
 }
 
+
+/*--------------------------------------------------------<            Entire chat container        >---------------------------*/
+
 .wrap {
-  display: flex;
+    display: flex;
+    position: absolute;
+    top: 6%; /* Start at the top of the page */
+    left: 0; /* Adjust as needed */
+    right: 0; /* Adjust as needed */
+    bottom: 0; /* Extend to the bottom of the page */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
 }
+
+@media (max-width: 768px) {
+    .wrap {
+        top: 0;
+    }
+}
+/*--------------------------------------------------------<            Entire page container        >---------------------------*/
+
 
 body {
     background-color: #000;
     color: #fff; /* Optionally, set the text color to white for better readability */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+      overflow: hidden; /* Prevent scroll bars */
+
 }
+
+
+/*--------------------------------------------------------<      Messaging tools container(Icons)        >---------------------------*/
 
 .aside {
     width: 20%;
@@ -34,7 +62,10 @@ body {
     text-align: center;
     padding-top: 2%;
     position: relative;
+    height: 100%; /* Add this line to make the aside fill the entire height */
 }
+
+
 
 /*Message icon color*/
 .aside .fas,
@@ -45,8 +76,8 @@ body {
 
 .compose {
     width: 60%;
-    background-color: #000;
-    color: #ecf4ff;
+    background-color: #0e00;
+    color: #0010ff;
     padding: 5% 0;
     margin: 0 auto 10%;
     display: flex;
@@ -75,7 +106,7 @@ body {
 
 /*On hover ,this color will appear(black initially)*/
 .compose:hover {
-  color: #fff;
+  color: #34ff00;
   background-color: #000;
 }
 
@@ -99,10 +130,15 @@ body {
   background-color: #000;
 }
 
+/*move thead sent button to the left side of the Aside container*/ 
+
+
+
+/*--------------------------------< Aside Icons >------------------------------------------*/
+
 .list li a {
   display: flex;
   flex-direction: column;
-  color: #ecf4ff;
   font-weight: bold;
 }
 
@@ -186,12 +222,13 @@ body {
 }
 
 
-/*Main Container for information e.g.People container */
+/*-------------------------------------------------------<    Main Container for information e.g.Users container     >-------------------------------------------- */
 .information {
-  width: 30%;
+  width: 20%;
   background-color: #000;
   text-align: center;
   padding: 2% 0;
+
 }
 
 @media (max-width: 768px) {
@@ -200,16 +237,18 @@ body {
   }
 }
 
+/*-------------------------------------------------------<    Search Container     >-------------------------------------------- */
+
 .information .search {
   width: 90%;
-  margin: 0 auto;
+  margin: -9.5% auto;
   position: relative;
 }
 
 .search .search-content {
   width: 100%;
   padding: 5% 0 5% 20%;
-  border-radius: 10px;
+  border-radius: 100px;
   outline: none;
   border: 2px solid transparent;
   background-color: #000;
@@ -226,27 +265,39 @@ body {
 }
 
 .search .fa-duotone {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 5%;
-  display: flex;
-  align-items: center;
+    font-size: 70px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5%;
+    display: flex;
+    align-items: center;
 }
+
+/*--------------------------------------------------------<     Style for the "Inbox" header/ Inbox Text      >---------------------------*/
 
 .inbox {
-  width: 90%;
-  margin: 0 auto;
-  text-align: left;
-  color: #e2ebf9;
-  margin: 6% auto 0;
+    background-color: #000;
+    padding: 10px;
+    position: sticky;
+    top: 0; /* Stick to the top of the .inbox-container */
+    z-index: 1; /* Ensure it's above other content */
+
 }
 
-/* Style for the inbox container */
+
+/*--------------------------------------------------------<      MAIN USERS CONTAINER     >---------------------------*/
+
+/* Style for the main/outter inbox container */
 .inbox-container {
-    max-height: 610px; /* Set a maximum height for scrolling */
+    max-height: 100%; /* Set a maximum height for scrolling */
     overflow-y: auto; /* Enable scroll when content exceeds container height */
-    position: relative;
+    position: absolute;
+    background-color: #000;
+    top: 5.9%; /* Start at halfway of the .wrap */
+    bottom: 0; /* Stretch to the bottom of the .wrap */
+    left: 0; /* Position to the left */
+    width: 20%; /* Adjust the width as desired */
 }
 
     /* Style for custom scroll bar */
@@ -272,7 +323,7 @@ body {
 
 .avatar-group {
     width: 90%;
-    margin: 0 auto;
+    margin: -4.4% auto 0; /* Adjust the margin-top value as needed */
     background-color: #000;
 }
 
@@ -420,159 +471,314 @@ body {
   border: 2px solid #000;
 }
 
+/*--------------------------------------------------------<    chat/ message container        >---------------------------*/
+
+
 .message {
     width: 50%;
     background-color: #000;
     padding: 2% 0;
     position: relative;
     overflow: hidden; /* Hide the native scrollbar */
+    flex-grow: 1; /* Grow to fill the remaining space */
 }
 
 .message-container {
-    max-height: 400px; /* Set a maximum height for scrolling */
+    background-color: #e9be4600;
+    max-height: 100%; /* Set it to 100% to stretch to the bottom */
+    margin-left: 260px; /* Adjust the margin as needed */
     overflow-y: auto; /* Enable scroll when content exceeds container height */
     padding: 10px; /* Add some padding for aesthetics */
+    position: sticky;
+    bottom: 0; /* Align with the bottom of the .wrap */
+    top: 0; /* Start just below the message title container */
+    left: 60px;
+    width: 2050px; /* Set a fixed width for desktop view */
 }
 
 @media (max-width: 768px) {
-  .message {
-    display: none;
-  }
+    .message {
+        width: 100%;
+        left: 0;
+    }
 }
 
-/*Main message container*/
-.message .main-message {
-  width: 90%;
-  margin: 0 auto;
-  padding: 4%;
-  background-color: #000;
-  border-radius: 10px;
-}
 
-.main-message .message-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    @media (max-width: 768px) {
+        .message-container {
+            width: 100%; /* Adjust for smaller screens */
+            left: 0; /* Reset left position for smaller screens */
+        }
+    }
 
-.message-title .message-avatar {
-  width: 10%;
-}
+    /*--------------------------------------------------------<            Main message container        >---------------------------*/
 
+    .message-title {
+        display: flex; /* Use flexbox for layout */
+
+        background-color: #000; /* Set a background color to make it stand out */
+        position: sticky; /* Make the container a positioning context */
+        top: 0; /* Move it up by 20 pixels (adjust as needed) */
+        z-index: 1; /* Ensure it stays above other content */
+        /* Add styles for padding, border, or other visual enhancements */
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        height: 150px; /* Adjust the height to make it smaller */
+        position: sticky;
+    }
+
+
+    .message .main-message {
+        width: 100%;
+        margin: 4vh auto 0; /* Adjust the margin-top value (e.g., -20vh) to move it up by 20% of the viewport height */
+        padding: 4%;
+        background-color: #000;
+        border-radius: 10px;
+        height: 54vh; /* Adjust the height to control how much it fills the page */
+        max-height: 70vh; /* Ensure it doesn't exceed the viewport height */
+        overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    }
+
+
+    .main-message .message-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+/*-------------------------------------------------------------------------<   Friend Profile Pcture  _  Sub Message title container    >---------------------------*/
+
+/*--------------------------------------------------------<   [Avar within selected message]    >---------------------------*/
+    .message-title .message-avatar {
+        width: 40px;
+        height: 40px;
+        position: absolute; /* Position the avatar within the container */
+        top: 0; /* Stick it to the top of the container */
+        left: 0; /* Stick it to the left of the container */
+        margin: 0; /* Reset margin */
+    }
+
+
+/*--------------------------------------------------------<   [message-info/subject and selected User name]    >---------------------------*/
 .message-title .message-info {
-  width: 70%;
-  padding-left: 4%;
+    width: 70%;
+    padding-left: 4%;
+    flex: 1;
+    text-align: center; /* Center-align the content within the container */
 }
 
-.message-info .message-name {
-  font-size: 20px;
-  font-weight: bold;
+/*----------------------------------<Selected message,User name>-----------------------*/
+    .message-info .message-name {
+        font-size: 20px;
+        font-weight: bold;
+        color: #34ff00;
+    }
+
+/*----------------------------------<Selected message,Topic/subject>-----------------------*/
+.message-project {
+    font-weight: bold; /* Optionally make the text bold */
+    color: #0010ff;
+        margin-left: -1100px; /* Adjust the left margin as needed to move it to the left */
 }
 
-.message-title .message-sub-info {
-  width: 20%;
-  text-align: right;
-  color: #4a5568;
-}
+    /*Selected message sub info.( Time ,Subject and Selected user name)*/
+    .message-title .message-sub-info {
+        width: 20%;
+        text-align: right;
+        color: #0010ff;
+    }
 
-.message-content p {
-  margin-top: 4%;
-}
+    .message-content p {
+        margin-top: 2%;
+    }
 
-.message-content p::first-letter {
-  font-size: 24px;
-  float: left;
-  margin-right: 1%;
-}
-
-.tool-message {
-  width: 90%;
-  margin: 5% auto 0;
-  padding: 4%;
-  border-radius: 10px;
-  background-color: #000;
-}
-
-.tool-message .tool-list {
-  display: flex;
-  justify-content: space-between;
-}
-
-.tool-list .tool-img {
-  width: 14%;
-}
-
-.tool-img img {
-  border-radius: 5px;
-  height: 70%;
-}
-
-.tool-message .download-group {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/*Text for number of files attached*/
-.download-group .attach {
-  width: 70%;
-  color: #4a5568;
-}
+        .message-content p::first-letter {
+            font-size: 24px;
+            float: left;
+        }
 
 
-.download-group .download {
-    width: 30%;
-    display: block;
-    padding: 2% 0;
-    text-align: center;
-    color: #4a5568;
+
+    .tool-message {
+        width: 91.98%;
+        margin: -5% auto 0 10%; /* Adjust the margin-left value (e.g., 10%) to move it to the right */
+        padding: 2%;
+        border-radius: 300px;
+        background-color: #000;
+        height: 31%;
+    }
+
+
+        /*----------------------------------------------------------<       IMG CONTAINER         >------------------------------------------*/
+
+        .tool-message .tool-list {
+            display: inline-block;
+            justify-content: space-between;
+        }
+
+    .tool-list .tool-img {
+        display: inline-block;
+        width: 14%; /* Set the width for each image */
+        margin-right: 27px; /* Adjust the margin as needed */
+    }
+
+
+    /*----------------------------------------------------------<        Scroll tool for IMG attachment          >------------------------------------------*/
+
+    .horizontal-scroll {
+        width: 100%; /* Set a fixed width for the container */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap;
+        padding: 10px 0;
+        display: flex; /* Use flex to allow images to overflow the container */
+        flex-wrap: nowrap; /* Prevent images from wrapping to the next line */
+    }
+
+    .tool-img img {
+        border-radius: 60px;
+        height: 70%;
+    }
+
+
+    /*----------------------------------------------------<  IMG Download section >--------------------------------*/
+    .tool-message .download-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /*-----------------------------------------------<   Text for number of files attached >------------------*/
+    .download-group .attach {
+        width: 70%;
+        color: #4a5568;
+    }
+
+
+/*----------------------------------------------------<  IMG Download button >--------------------------------*/
+
+    .download-group .download {
+        width: 30%;
+        display: block;
+        padding: 2% 0;
+        text-align: center;
+        color: #0010ff;
+        background-color: #000;
+        border-radius: 150px;
+        font-weight: bold;
+    }
+
+
+/*----------------------------------------------------<  Reply buttons >--------------------------------*/
+
+    .change-tool .tool-container {
+        display: flex;
+        justify-content: flex-end; /* Align the buttons to the right */
+    }
+
+    .change-tool {
+        position: relative;
+    }
+
+        .change-tool .reply,
+        .change-tool .forward {
+            width: 30%;
+            padding: 2% 0;
+            display: block;
+            font-size: 24px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        /*Reply text*/
+        .change-tool .reply {
+            margin-right: 10px; /* Adjust as needed */
+        }
+
+            .change-tool .reply:hover {
+                background-color: greenyellow;
+                text-decoration: none;
+            }
+
+        /*Forward text*/
+        .change-tool .forward {
+            margin-right: 10px; /* Adjust as needed */
+        }
+
+            .change-tool .forward:hover {
+                background-color: #dbe5f8;
+            }
+
+        .change-tool .fas {
+            padding-right: 5%;
+        }
+
+    /*----------------------------------------------------------<        styles to the chat and its child elements          >------------------------------------------*/
+
+
+.chat .input-container {
+    display: flex;
+    flex-direction: column;
+    padding: 13px 1px;
+    height: 100%;
+    border-top: 1px solid #ccc;
     background-color: #000;
-    border-radius: 10px;
-    font-weight: bold;
+    align-items: center; /* Vertically center items */
+    justify-content: space-between;
+    position: relative; /* Make it a positioning context */
 }
 
-.change-tool {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  position: absolute;
-  left: 5%;
-  bottom: 2%;
+/*----------------------------------------------------------<       [SEND MESSAGE ICON]   >------------------------------------------*/
+.input-container .send {
+    background-color: #000; /* Replace with the desired background color */
+    padding: 10px; /* Adjust the padding to change the icon's size */
+    border-radius: 50%; /* Makes it a circle, adjust as needed */
+    border: none; /* Remove any border */
+    outline: none; /* Remove any outline */
+}
+    .input-container .send i {
+        font-size: 66px; /* Adjust the font size for the icon */
+        color: #b6ff00; /* Set the icon color */
+    }
+    .input-container .attach i {
+        font-size: 66px; /* Adjust the font size for the icon */
+        color: #b6ff00; /* Set the icon color */
+    }
+
+/*----------------------------------------------------------<       [Chat box-area container]   >------------------------------------------*/
+
+.chat .textarea-container {
+    position: relative;
+    top: 0; /* Adjust this value as needed to match the height of the top part of the aside container */
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+    height: 32.55vh;
 }
 
-.change-tool .reply,
-.change-tool .forward {
-  width: 30%;
-  padding: 2% 0;
-  display: block;
-  font-size: 24px;
-  text-align: center;
-  border-radius: 10px;
+/*----------------------------------------------------------<       [Text-area for typed message]   >------------------------------------------*/
+.chat textarea {
+    border: none;
+    outline: none;
+    font-size: 26px;
+    font-family: "Roboto", sans-serif;
+    resize: none;
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    background-color: #000;
+    color: #fff;
 }
 
-/*Reply text*/
-.change-tool .reply {
-  color: #e3ecfc;
-  background-color: #44448e;
-  margin-right: 5%;
-}
+        .chat .attach {
+            border: none;
+            border-radius: 50%;
+            width: 100%;
+            height: 8vh;
+            max-height: 60px;
+            max-width: 60px;
+        }
 
-.change-tool .reply:hover {
-  background-color: #4c51bf;
-}
-
-    /*Forward text*/
-.change-tool .forward {
-  color: #434190;
-  background-color: #c3dafe;
-}
-
-.change-tool .forward:hover {
-  background-color: #dbe5f8;
-}
-
-.change-tool .fas {
-  padding-right: 5%;
-}
-
-/* https://codepen.io/azrikahar/pen/xxVoBdj */
