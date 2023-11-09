@@ -52,33 +52,35 @@
 
             <a href="@Url.Action("Chat", "Chat")" class="communication-icon" id="communication">
 
-
-                <div class="communicate-icon">
-
-
-                    <i 
-                        
-                       id="chat-icon" 
-                       class="fa-thin fa-message-dots"
-                       title="Chats">
-
-                    </i>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="communicate-icon">
 
 
-                    <i 
-                        
+                        <i 
+
+                        id="chat-icon" 
+                        class="fa-thin fa-message-dots"
+                        title="Chats">
+
+                        </i>
+
+
+                        <i 
+
                         class="fa-duotone fa-envelope-open-text" 
                         title="Email">
 
-                    </i>
+                        </i>
 
 
-                </div>
+                    </div>
 
-                <div class="cough-icon">
-                    <i class="fa-thin fa-head-side-cough fa-flip-horizontal"></i>
-                </div>
-                <span>Communicate</span>
+                    <div class="cough-icon">
+                        <i class="fa-thin fa-head-side-cough fa-flip-horizontal"></i>
+                    </div>
+                    <span>Communicate</span>
+                }
             </a>
         </div>
 

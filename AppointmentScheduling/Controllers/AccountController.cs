@@ -63,7 +63,7 @@ namespace AppointmentScheduling.Controllers
                     else
                     {
                         HttpContext.Session.SetString("ssuserName", user.Name);
-                        //var userName = HttpContext.Session.GetString("ssuserName");
+                        //var username = httpcontext.session.getstring("ssusername");
                         return RedirectToAction("Index", "Home");
                     }
                 }

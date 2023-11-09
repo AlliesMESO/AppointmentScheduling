@@ -11,13 +11,10 @@ namespace AppointmentScheduling.Models
         public string Identification { get; set; }
         public int Age { get; set; }
         public string PhoneNumber { get; set; }
-        public string Workplace { get; set; }
-        public string Gender { get; set; }
-
+        public string Workplace { get; set; } 
         [MaxLength(100)] // maximum length of the address if needed
         public string Address { get; set; }
         public string ProfilePicturePath { get; set; }
-
-
+        public string Gender { get; set; }
     }
 }

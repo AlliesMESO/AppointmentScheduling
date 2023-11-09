@@ -75,7 +75,7 @@ namespace AppointmentScheduling.Controllers
                     }
                     catch (System.Exception)
                     {
-                        ModelState.AddModelError("", "Erro");
+                        ModelState.AddModelError("", "Error");
 
                         throw;
                     }
@@ -235,5 +235,7 @@ namespace AppointmentScheduling.Controllers
             }
         
         }
+
+
     }
 }   

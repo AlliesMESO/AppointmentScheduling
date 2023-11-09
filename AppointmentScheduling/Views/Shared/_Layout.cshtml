@@ -78,6 +78,7 @@
 
                     </a>
 
+
                     <ul class="navbar-nav mx-auto flex-column">
                         @if (User.Identity.IsAuthenticated)
                         {
@@ -129,6 +130,7 @@
                         }
 
                     </ul>
+
 
 
 
@@ -188,16 +190,13 @@
 
 
             <!-- footer content here -->
-
-            
-
-           @* <div id="partialName">*@
+            @* <div id="partialName">*@
 
 
-           @* </div>*@
+            @* </div>*@
 
             <div class="footer-content">
-                            @await Html.PartialAsync("_LoginPartial") @*_LoginPartial view by rendering it using the Partial method*@
+                @await Html.PartialAsync("_LoginPartial") @*_LoginPartial view by rendering it using the Partial method*@
 
                 &copy; 2023 - AtomMatrix- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 

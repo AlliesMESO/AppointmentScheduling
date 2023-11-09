@@ -166,6 +166,9 @@ body {
     left: 10px; /* Adjust the distance from the left */
 }
 
+.fa-atom-simple  {
+    font-size: 44px;
+}
 
 .footer-content {
     flex-grow: 1;
@@ -325,7 +328,7 @@ body {
 }
 
 #communication-container {
-    position: fixed;
+    position:relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -439,8 +442,8 @@ body {
     /* Style for the cough icon */
     .communication-icon .fa-thin.fa-head-side-cough {
         font-size: 60px; /* Adjust the icon size as needed */
-        color: #333; /* Set your desired icon color */
-        margin: 5px; /* Add some margin to separate the icons */
+        color: #162466; /* Set your desired icon color */
+        margin: -1px; /* Add some margin to separate the icons */
         vertical-align: middle; /* Add this line */
         position: fixed;
     }
@@ -449,8 +452,8 @@ body {
     /* Style for the "Communicate" text */
     .communication-icon span {
         position: relative;
-        top: 70px; /* Adjust the top value to move the text up */
-        left: 50px;
+        top: 30px; /* Adjust the top value to move the text up */
+        left: -30px;
     }
 
 /* Style the icon within the button */
@@ -544,5 +547,9 @@ body {
     color: green;
     text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
     animation: none; /* Remove animation */
+}
+
+fa-atom-simple {
+    font-size: 46px;
 }
 

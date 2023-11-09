@@ -7,7 +7,10 @@ namespace AppointmentScheduling.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        { 
+
+        }
 
         // Define your DbSet properties for your entities (e.g., Appointments)
 
@@ -16,6 +19,10 @@ namespace AppointmentScheduling.Models
 
         // Other DbSet properties for your entities
         public DbSet<ApplicationUser> User { get; set; } //Name it 'User/Users'
-
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Your customizations
+        }
     }
 }

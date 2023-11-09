@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mssql4": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/AtomMatrix/providers/Microsoft.ServiceLinker/linkers/atommatrixdbseverdbserver_D02AC12F24",
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/atommatrixdbserverdbserver/databases/AtomMatrixdbserver",
+      "type": "mssql.azure",
+      "connectionId": "atommatrixdbseverdbserver"
+    }
+  }
+}
