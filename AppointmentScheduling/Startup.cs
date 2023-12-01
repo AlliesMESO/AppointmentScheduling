@@ -1,5 +1,6 @@
 using AppointmentScheduling.Controllers;
 using AppointmentScheduling.DbInitializer;
+using AppointmentScheduling.Hubs;
 using AppointmentScheduling.Models;
 using AppointmentScheduling.Repositories;
 using AppointmentScheduling.Services;
@@ -57,6 +58,9 @@ namespace AppointmentScheduling
                 options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Home/AccessDenied");
             });
             services.AddHttpContextAccessor();
+
+            services.AddScoped<IChatService, ChatService>();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -102,6 +106,13 @@ namespace AppointmentScheduling
                 name: "profile_picture_upload",
                 pattern: "Profile/UploadProfilePicture", // Adjust this route to match your application's structure
                defaults: new { controller = "User", action = "UploadProfilePicture" });
+
+
+                // Map the SignalR hub endpoint
+                endpoints.MapHub<ChatHub>("/chatHub");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 // Add other endpoints as needed
             });
