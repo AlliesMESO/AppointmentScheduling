@@ -15,7 +15,7 @@ namespace AppointmentScheduling.Models.ViewModels
     }
     public class ChatMessage
     {
-
+        public string SenderName { get; set; } = "DefaultSender"; //This ensures that the property is never null.
         public int MessageId { get; set; }
 
         [Display(Name = "Sender")]

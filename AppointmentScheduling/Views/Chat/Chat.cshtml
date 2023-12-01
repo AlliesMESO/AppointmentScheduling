@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,6 +21,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
 
     <!-- Include the SignalR JavaScript library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js"></script>
+
+
+    <!-- Include your custom script -->
     <script src="~/js/chat.js"></script>
 
     <!-- ... Other script references ... -->
@@ -66,10 +72,12 @@
                                 <div class="main-info">
 
 
-                                    <p class="fistname">
+                                    <p class="firstname">
 
-                                        USER 5
-
+                                        @if (Model.SenderName != null)
+                                        {
+                                            @Model.SenderName
+                                        }
                                     </p>
 
                                     <p class="project">
@@ -561,7 +569,10 @@
 
                     <p class="message-name">
 
-                        Emalee Kalmar
+                        @if (Model.SenderName != null)
+                        {
+                            @Model.SenderName
+                        }
                     </p>
 
                     <p class="message-project">
@@ -584,157 +595,23 @@
 
             <div class="message-container">
 
-                <div class="main-message">
+               
 
-                    <div class="message-content">
+                    <div class="main-message">
 
+                        <div class="message-content">
 
-                        <p>
-                            Paragraph 1
-                            Anyone can enjoy summer vacations the w
-                            ay they like but according to me the best w
-                            ay to enjoy summer vacation is to learn or re
-                            ad something. Also, learning and reading not on
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
+                            <p>
 
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-                        </p>
+                                @Model.Content
 
+                            </p>
 
-                        <p>
-                            Paragraph 2
-                            Anyone can enjoy summer vacations the w
-                            ay they like but according to me the best w
-                            ay to enjoy summer vacation is to learn or re
-                            ad something. Also, learning and reading not on
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
+                        </div>
 
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-                        </p>
-
-                        <p>
-                            Paragraph 3
-
-                            Anyone can enjoy summer vacations the w
-                            ay they like but according to me the best w
-                            ay to enjoy summer vacation is to learn or re
-                            ad something. Also, learning and reading not on
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
-
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-                        </p>
-
-                        <p>
-                            Paragraph 4
-
-                            Anyone can enjoy summer vacations the w
-                            ay they like but according to me the best w
-                            ay to enjoy summer vacation is to learn or re
-                            ad something. Also, learning and reading not on
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
-
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-                        </p>
-
-                        <p>
-                            Paragraph 5
-
-                            Anyone can enjoy summer vacations the w
-                            ay they like but according to me the best w
-                            ay to enjoy summer vacation is to learn or re
-                            ad something. Also, learning and reading not on
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
-
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-                        </p>
-
-                        <p>
-                            Paragraph 6
-                            Anyone can enjoy summer vacations the w
-                            ay they like but according to me the best w
-                            ay to enjoy summer vacation is to learn or re
-                            ad something. Also, learning and reading not on
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
-
-                            ly help you in your school and college life but
-                            also proved very useful in the future. But everyo
-                            ne has their opinion about enjoying the summer va
-                            cation. On one hand, there are people who like to
-                            go outdoor and on the other, there are people who
-                            like to spend their entire time indoors.
-
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-
-                            Summer vacation is a quality time of the year for
-                            children. So, they should try to utilize that time
-                            not only in playing games but also doing some activi
-                            ties that will make them more active. Also, at this t
-                            ime they can do anything they want to do. They can enjoy
-                            this quality time with their parents, friends, and neighbors.
-                        </p>
                     </div>
 
-                </div>
+                
 
             </div>
 
@@ -774,7 +651,7 @@
                         Inbox
                     </a>
                 </li>
-                
+
                 <li>
                     <a href="#">
                         <i class="fa-thin fa-message-heart fa-2xl"></i>
@@ -795,7 +672,7 @@
                 </li>
 
                 <li>
-                   
+
                     <a href="#">
                         <i class="fa-thin fa-envelope-circle-check fa-2xl"></i>
                         Sent
@@ -814,14 +691,14 @@
                         <i class="fa-duotone fa-ufo fa-spin-pulse fa-lg"></i>
                     </button>
 
-              
+
 
                     <div class="textarea-container">
                         <textarea type="text" placeholder="message"></textarea>
                     </div>
-                   
+
                 </div>
-              
+
             </div>
 
 

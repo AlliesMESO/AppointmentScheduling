@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AppointmentScheduling.Models.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace AppointmentScheduling.Controllers
 {
@@ -6,13 +8,31 @@ namespace AppointmentScheduling.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+            List<ChatMessage> messages = GetMessages();
+
+            return View(messages);
+        }
+
+     private List<ChatMessage> GetMessages()
+        {
+            List<ChatMessage> messages = new List<ChatMessage>
+            {
+                new ChatMessage { SenderId = "sender1", RecipientId = "recipient1", Content = "Hello!"},
+                new ChatMessage { SenderId = "recipient1", RecipientId = "sender1", Content = "Hi there"},
+            };
+
+            return messages;
         }
 
         public IActionResult Chat()
         {
-            return View();
-        }
+            var chatMessage = new ChatMessage
+            {
+                SenderName = "DefaultSender"
+            };
 
+            return View(chatMessage);
+        }
     }
 }

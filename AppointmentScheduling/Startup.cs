@@ -110,6 +110,9 @@ namespace AppointmentScheduling
 
                 // Map the SignalR hub endpoint
                 endpoints.MapHub<ChatHub>("/chatHub");
+
+                // Map other endpoints (controllers, default route, etc.)
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -4,9 +4,16 @@ const hubConnection = new signalR.HubConnectionBuilder()
     .configureLogging(SignalR.LogLevel.Information)
     .build();
 
-hubconnection.on("ReceiveMessage", (user, message) => {
+hubConnection.on("ReceiveMessage", (user, message) => {
+
     //Handle the received message here
     console.log('${user}: ${message}');
+
+        // Implement logic to display the message in your UI
+            // Update the UI to show the actual username
+                // Replace "USER_DISPLAY_ELEMENT" with the actual element where you want to display the username
+    document.querySelector('.firstname').innerText = user;
+
 });
 
 hubConnection.start().then(() => {
