@@ -1,6 +1,9 @@
-﻿
+﻿@model List<AppointmentScheduling.Models.ApplicationUser>
+@Model IEnumerable<AppointmentScheduling.Model.ViewModels.ChatMessage>
+    <!-- Use ChatMessage if you're passing a single object -->
 
-<!DOCTYPE html>
+    <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -52,7 +55,8 @@
 
                 <ul class="avatar-group">
 
-
+                    @foreach (var user in Model)
+                    {
                     <li class="avatar">
 
 
@@ -74,10 +78,10 @@
 
                                     <p class="firstname">
 
-                                        @if (Model.SenderName != null)
-                                        {
-                                            @Model.SenderName
-                                        }
+                                                @if (!string.IsNullOrEmpty(user.Name))
+                                                {
+                                                    @user.Name
+                                                }
                                     </p>
 
                                     <p class="project">
@@ -93,8 +97,8 @@
 
                                 <div class="sub-info">
 
-                                    <p>August 18</p>
-                                    <p>8:39 pm</p>
+                                    <p>@DateTime.Now.ToString("MMM dd")</p>
+                                    <p>@DateTime.Now.ToString("h:m tt")</p>
 
                                 </div>
 
@@ -119,341 +123,7 @@
 
                     </li>
 
-
-                    <li class="avatar">
-
-
-                        <div class="avatar-pic">
-
-                            <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-                        </div>
-
-
-                        <div class="avatar-content">
-
-
-                            <div class="avatar-info">
-
-
-                                <div class="main-info">
-
-
-                                    <p class="fistname">
-                                        USER 699 234 543
-                                    </p>
-
-
-                                    <p class="project">
-
-                                        Subject:
-                                        <span>Nature walk</span>
-
-                                    </p>
-
-                                </div>
-
-
-                                <div class="sub-info">
-
-                                    <p>August 10</p>
-                                    <p>10:14 am</p>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <p class="description">
-                                Lorem ipsum dolor sit amet.
-                            </p>
-
-
-                        </div>
-
-
-                        <a href="#" class="more">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </a>
-
-
-                    </li>
-
-
-                    <li class="avatar">
-
-
-                        <div class="avatar-pic">
-
-                            <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-                        </div>
-
-
-                        <div class="avatar-content">
-
-
-                            <div class="avatar-info">
-
-
-                                <div class="main-info">
-
-
-                                    <p class="fistname">
-
-                                        USER 42 332
-
-                                    </p>
-
-
-                                    <p class="project">
-
-                                        Subject:
-                                        <span>Music</span>
-
-
-                                    </p>
-
-
-                                </div>
-
-
-                                <div class="sub-info">
-
-                                    <p>July 22</p>
-                                    <p>5:37 am</p>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <p class="description">
-
-                                Lorem ipsum dolor sit amet consectetur.
-
-                            </p>
-
-
-                        </div>
-
-
-                        <a href="#" class="more">
-
-                            <i class="fas fa-ellipsis-v"></i>
-
-                        </a>
-
-
-                    </li>
-
-
-                    <li class="avatar">
-
-
-                        <div class="avatar-pic">
-
-                            <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-
-                        </div>
-
-
-                        <div class="avatar-content">
-
-
-                            <div class="avatar-info">
-
-
-                                <div class="main-info">
-
-
-                                    <p class="fistname">
-
-                                        User 18
-
-                                    </p>
-
-                                    <p class="project">
-
-                                        Subject:
-
-                                        <span>Video games</span>
-
-                                    </p>
-
-
-                                </div>
-
-
-                                <div class="sub-info">
-
-                                    <p>July 7</p>
-                                    <p>6:31 pm</p>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <p class="description">
-
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-
-                            </p>
-
-
-                        </div>
-
-
-                        <a href="#" class="more">
-
-                            <i class="fas fa-ellipsis-v"></i>
-
-                        </a>
-
-
-                    </li>
-
-                    <li class="avatar">
-
-
-                        <div class="avatar-pic">
-
-                            <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-
-                        </div>
-
-
-                        <div class="avatar-content">
-
-
-                            <div class="avatar-info">
-
-
-                                <div class="main-info">
-
-
-                                    <p class="fistname">
-
-                                        User 11
-
-                                    </p>
-
-                                    <p class="project">
-
-                                        Subject:
-
-                                        <span>Video games</span>
-
-                                    </p>
-
-
-                                </div>
-
-
-                                <div class="sub-info">
-
-                                    <p>July 7</p>
-                                    <p>6:31 pm</p>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <p class="description">
-
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-
-                            </p>
-
-
-                        </div>
-
-
-                        <a href="#" class="more">
-
-                            <i class="fas fa-ellipsis-v"></i>
-
-                        </a>
-
-
-                    </li>
-
-                    <li class="avatar">
-
-
-                        <div class="avatar-pic">
-
-                            <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-
-                        </div>
-
-
-                        <div class="avatar-content">
-
-
-                            <div class="avatar-info">
-
-
-                                <div class="main-info">
-
-
-                                    <p class="fistname">
-
-                                        User 300
-
-                                    </p>
-
-                                    <p class="project">
-
-                                        Subject:
-
-                                        <span>Video games</span>
-
-                                    </p>
-
-
-                                </div>
-
-
-                                <div class="sub-info">
-
-                                    <p>July 7</p>
-                                    <p>6:31 pm</p>
-
-                                </div>
-
-
-                            </div>
-
-
-                            <p class="description">
-
-                                Lorem ipsum dolor sit amet consectetur adipisicing.
-
-                            </p>
-
-
-                        </div>
-
-
-                        <a href="#" class="more">
-
-                            <i class="fas fa-ellipsis-v"></i>
-
-                        </a>
-
-
-                    </li>
-
+                    }
                 </ul>
 
 
@@ -569,10 +239,7 @@
 
                     <p class="message-name">
 
-                        @if (Model.SenderName != null)
-                        {
-                            @Model.SenderName
-                        }
+
                     </p>
 
                     <p class="message-project">
@@ -595,23 +262,23 @@
 
             <div class="message-container">
 
-               
 
-                    <div class="main-message">
 
-                        <div class="message-content">
+                <div class="main-message">
 
-                            <p>
+                    <div class="message-content">
 
-                                @Model.Content
+                        <p>
 
-                            </p>
 
-                        </div>
+
+                        </p>
 
                     </div>
 
-                
+                </div>
+
+
 
             </div>
 
@@ -684,14 +351,14 @@
             <div class="chat">
 
                 <div class="input-container">
+
                     <button class="attach">
                         <i class="fa fa-paperclip"></i>
                     </button>
+
                     <button class="send">
                         <i class="fa-duotone fa-ufo fa-spin-pulse fa-lg"></i>
                     </button>
-
-
 
                     <div class="textarea-container">
                         <textarea type="text" placeholder="message"></textarea>

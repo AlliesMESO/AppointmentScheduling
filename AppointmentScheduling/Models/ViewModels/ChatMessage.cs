@@ -22,10 +22,13 @@ namespace AppointmentScheduling.Models.ViewModels
         [Required]
         public string SenderId { get; set; }
 
+        public ApplicationUser Sender { get; set; } //Navigation property
 
         [Display(Name = "Recipient")]
         [Required]
         public string RecipientId { get; set; }
+
+        public ApplicationUser Recipient { get; set; } //Navigation property
 
         [Required]
         [StringLength(200, MinimumLength = 1, ErrorMessage = "Message length must be between 1 and 200 characters!")]
