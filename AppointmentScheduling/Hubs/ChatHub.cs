@@ -6,7 +6,7 @@ namespace AppointmentScheduling.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(string message)
+        public async Task SendMessage(string user,string message)
         {
             var userName = Context.Items["UserName"] as string;
             Console.WriteLine($"Received message from {userName}: {message}");

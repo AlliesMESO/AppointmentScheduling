@@ -9,6 +9,8 @@ using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.SignalR;
+using AppointmentScheduling.Hubs;
 
 namespace AppointmentScheduling.Utility
 {
@@ -17,6 +19,12 @@ namespace AppointmentScheduling.Utility
         private IConfiguration Configuration;
         public EmailSender(IConfiguration _configuration)
         {
+            Configuration = _configuration;
+        }
+        private readonly IHubContext<ChatHub> _hubContext;
+        public EmailSender(IHubContext<ChatHub> hubContext, IConfiguration _configuration)
+        {
+            _hubContext = hubContext;
             Configuration = _configuration;
         }
 
@@ -28,7 +36,7 @@ namespace AppointmentScheduling.Utility
             string fromAddress = this.Configuration.GetValue<string>("Smtp:FromAddress");
             string userName = this.Configuration.GetValue<string>("Smtp:UserName");
             string password = this.Configuration.GetValue<string>("Smtp:Password");
-
+            await _hubContext.Clients.All.SendAsync("SendEmailMessage", "System", $"Email Sent: {subject}");
             try
             {
                 using (MailMessage mm = new MailMessage(fromAddress, email))

@@ -48,7 +48,7 @@
                 <input class="search-content" type="text" placeholder="Search">
             </div>
 
-
+            
             <div class="inbox-container">
 
                 <h3 class="inbox">Inbox</h3>
@@ -105,10 +105,10 @@
 
                             </div>
 
-
-                            <p class="description">
-
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    <!-- Display the most recent message in the description -->
+                            <p class="description" id="recentMessage">
+                                        <!-- This will be dynamically updated with the most recent message -->
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
                             </p>
 
@@ -268,11 +268,12 @@
 
                     <div class="message-content">
 
-                        <p>
+                            <!-- This is where all messages will be displayed -->
+                        <ul id="allMessages">
 
+                                <!-- Each message will be a list item -->
 
-
-                        </p>
+                        </ul>
 
                     </div>
 
@@ -358,6 +359,10 @@
 
                     <button class="send">
                         <i class="fa-duotone fa-ufo fa-spin-pulse fa-lg"></i>
+                    </button>
+
+                    <button class="send-email">
+                            <i class="fa-sharp fa-solid fa-truck-fast"></i>
                     </button>
 
                     <div class="textarea-container">
