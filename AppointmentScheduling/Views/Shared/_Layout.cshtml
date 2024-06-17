@@ -72,8 +72,9 @@
                     <a class="navbar-brand mx-auto pop-out" asp-controller="Home" asp-action="Index">
 
                         <div class="icon-text">
+
                             <i class="fa-thin fa-house-chimney"></i>
-                            <span class="icon-name">Home</span>
+
                         </div>
 
                     </a>
@@ -141,28 +142,34 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>*@
 
-                <!-- Main Navbar Links (Centered) -->
-                @*  <div class="collapse navbar-collapse" id="navbarColor02">
+             
 
-                <form class="d-flex">
-                <input class="form-control me-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-
-                </div>*@
+            
 
             </div>
 
 
 
             <button id="fullscreenButton"
+
                     title="Go Fullscreen"
                     class="fullscreen-off">
-
                 <i class="fa-duotone fa-user-astronaut glow"></i>
-
+                
             </button>
 
+
+            <!-- Main Navbar Links (Centered) -->
+            <div class="collapse navbar-collapse" id="navbarcolor02">
+
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="search" placeholder="search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">search</button>
+              
+                </form>
+
+            
+            </div>
         </nav>
 
 
@@ -174,7 +181,7 @@
     </header>
 
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3">*-+
             @RenderBody()
         </main>
 
@@ -195,12 +202,17 @@
 
             @* </div>*@
 
+
+
             <div class="footer-content">
                 @await Html.PartialAsync("_LoginPartial") @*_LoginPartial view by rendering it using the Partial method*@
 
                 &copy; 2023 - AtomMatrix- <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 
+
             </div>
+
+
 
         </div>
 
@@ -226,7 +238,7 @@
     <script src="~/js/script-custom-calendar.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="~/js/chats.js" asp-append-version="true"></script>
+    <script src="~/js/chat.js" asp-append-version="true"></script>
     <script src="~/js/full-screen.js" asp-append-version="true"></script>
 
 </body>

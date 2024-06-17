@@ -16,16 +16,15 @@ namespace AppointmentScheduling.Utility
 {
     public class EmailSender : IEmailSenders
     {
-        private IConfiguration Configuration;
-        public EmailSender(IConfiguration _configuration)
-        {
-            Configuration = _configuration;
-        }
+        private readonly IConfiguration Configuration;
         private readonly IHubContext<ChatHub> _hubContext;
-        public EmailSender(IHubContext<ChatHub> hubContext, IConfiguration _configuration)
+
+        // Use this constructor if you always want to use SignalR
+
+        public EmailSender(IHubContext<ChatHub> hubContext, IConfiguration configuration)
         {
             _hubContext = hubContext;
-            Configuration = _configuration;
+            Configuration = configuration;
         }
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)

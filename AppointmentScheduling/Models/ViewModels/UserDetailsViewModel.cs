@@ -16,8 +16,6 @@ namespace AppointmentScheduling.Models.ViewModels
         [Range(10, 300, ErrorMessage = "You must be between 10 and 300 years to progress")]
         public int Age { get; set; }
 
-       
-
         [Required(ErrorMessage = "Gender specification must be declared.")]
         public string Gender { get; set; }
 

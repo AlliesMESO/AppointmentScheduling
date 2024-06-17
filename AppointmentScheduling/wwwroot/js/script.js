@@ -1,19 +1,26 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿// Additional content from chats.js
+// Get a reference to the chat icon element by its ID
 
-// Write your JavaScript code.
-//window.addEventListener("load", () => {
-//    document.body.classList.remove("preload");
-//});
 
-//document.addEventListener("DOMContentLoaded", () => {
-//    const nav = document.querySelector(".nav");
+const chatIcon = document.getElementById("chat-icon");
 
-//    document.querySelector("#btnNav").addEventListener("click", () => {
-//        nav.classList.add("nav--open");
-//    });
+// Add a click event listener to the chat icon
+chatIcon.addEventListener("click", function () {
+    // Redirect the user to the chat page (replace "chat.html" with your actual chat page file name)
+    window.location.href = "chat.html"; // Change "chat.html" to the actual URL of your chat page.
+});
 
-//    document.querySelector(".nav__overlay").addEventListener("click", () => {
-//        nav.classList.remove("nav--open");
-//    });
-//});
+$(document).ready(function () {
+    $(".more").on("click", function (e) {
+        e.preventDefault();
+    });
+    $(".list li a").on("click", function (e) {
+        e.preventDefault();
+    });
+    $(".change-tool a").on("click", function (e) {
+        e.preventDefault();
+    });
+    $(".download").on("click", function (e) {
+        e.preventDefault();
+    });
+});

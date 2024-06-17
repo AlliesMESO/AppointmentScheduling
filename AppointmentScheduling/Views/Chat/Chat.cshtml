@@ -4,381 +4,392 @@
 
     <!DOCTYPE html>
 
-<html lang="en">
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="~/css/chat.css">
-
-
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Font-awsome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
-    <!-- animate -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" />
-    <!-- Swiper 輪播 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
-
-    <!-- Include the SignalR JavaScript library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js"></script>
+        <link rel="stylesheet" href="~/css/chat.css">
 
 
-    <!-- Include your custom script -->
-    <script src="~/js/chat.js"></script>
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+        <!-- Font-awsome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
-    <!-- ... Other script references ... -->
+        <!-- animate -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" />
+        <!-- Swiper 輪播 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.css">
 
-    <title>title</title>
-</head>
-
-<body>
-
-
-    <div class="wrap">
-
-        <div class="information">
+        <!-- Include the SignalR JavaScript library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js"></script>
 
 
-            <div class="search">
-                <i class="fa-duotone fa-telescope fa-2xl"></i>
-                <input class="search-content" type="text" placeholder="Search">
-            </div>
+        <!-- Include your custom script -->
+        <script src="~/js/chat.js"></script>
 
-            
-            <div class="inbox-container">
+        <!-- ... Other script references ... -->
 
-                <h3 class="inbox">Inbox</h3>
+        <title>title</title>
+    </head>
 
-                <ul class="avatar-group">
-
-                    @foreach (var user in Model)
-                    {
-                    <li class="avatar">
+    <body>
 
 
-                        <div class="avatar-pic">
+        <div class="wrap">
 
-                            <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-                        </div>
+            <div class="information">
 
 
-                        <div class="avatar-content">
+                <div class="search">
+                    <i class="fa-duotone fa-telescope fa-2xl"></i>
+                    <input class="search-content" type="text" placeholder="Search">
+                </div>
 
 
-                            <div class="avatar-info">
+                <div class="inbox-container">
+
+                    <h3 class="inbox">Inbox</h3>
+
+                    <ul class="avatar-group">
+
+                        @foreach (var user in Model)
+                        {
+                            <li class="avatar">
 
 
-                                <div class="main-info">
+                                <div class="avatar-pic">
+
+                                    <img src="/profilepictures/default-profile-picture.jpg" alt="">
+
+                                </div>
 
 
-                                    <p class="firstname">
+                                <div class="avatar-content inbox-item" data-recipient-id="@user.Id">
+
+
+                                    <div class="avatar-info">
+
+
+                                        <div class="main-info">
+
+
+                                            <p class="firstname">
 
                                                 @if (!string.IsNullOrEmpty(user.Name))
                                                 {
                                                     @user.Name
                                                 }
-                                    </p>
+                                            </p>
 
-                                    <p class="project">
+                                            <p class="project">
 
-                                        Subject:
-                                        <span>Nature walk</span>
+                                                Subject:
+                                                <span>Nature walk</span>
 
-                                    </p>
-
-
-                                </div>
+                                            </p>
 
 
-                                <div class="sub-info">
-
-                                    <p>@DateTime.Now.ToString("MMM dd")</p>
-                                    <p>@DateTime.Now.ToString("h:m tt")</p>
-
-                                </div>
+                                        </div>
 
 
-                            </div>
+                                        <div class="sub-info">
+
+                                            <p>@DateTime.Now.ToString("MMM dd")</p>
+                                            <p>@DateTime.Now.ToString("h:m tt")</p>
+
+                                        </div>
+
+
+                                    </div>
 
                                     <!-- Display the most recent message in the description -->
-                            <p class="description" id="recentMessage">
+                                    <p class="description" id="recentMessage">
                                         <!-- This will be dynamically updated with the most recent message -->
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
-                            </p>
+                                    </p>
 
 
-                        </div>
+                                </div>
 
 
-                        <a href="#" class="more">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </a>
+                                <a href="#" class="more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </a>
 
 
-                    </li>
+                            </li>
 
-                    }
-                </ul>
-
-
-            </div>
-
-
-        </div>
-
-        <div class="message">
-
-            <div class="tool-message">
-
-
-                <div class="horizontal-scroll">
-
-                    <ul class="tool-list">
-
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
-                        </li>
-
-                        <li class="tool-img">
-                            <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
-                        </li>
-
+                        }
                     </ul>
 
-                </div>
-                <div class="download-group">
-
-
-                    <p class="attach">8 files attached</p>
-
-                    <a href="#" class="download">
-
-                        <i class="fas fa-download"></i>
-                        Download All
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="message-title">
-
-
-                <div class="message-avatar">
-
-
-                    <img src="/profilepictures/default-profile-picture.jpg" alt="">
-
-
-                </div>
-
-
-                <div class="message-info">
-
-
-                    <p class="message-name">
-
-
-                    </p>
-
-                    <p class="message-project">
-                        Subject:Nature walk
-                    </p>
-
-
-                </div>
-
-
-                <div class="message-sub-info">
-
-                    <p>August 10</p>
-                    <p>10:24 am</p>
 
                 </div>
 
 
             </div>
 
-            <div class="message-container">
+            <div class="message">
+
+                <div class="tool-message">
 
 
+                    <div class="horizontal-scroll">
 
-                <div class="main-message">
+                        <ul class="tool-list">
 
-                    <div class="message-content">
 
-                            <!-- This is where all messages will be displayed -->
-                        <ul id="allMessages">
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
 
-                                <!-- Each message will be a list item -->
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/AygJgCM_vto/180x248" alt="">
+                            </li>
+
+                            <li class="tool-img">
+                                <img src="https://source.unsplash.com/invk-J8_ldQ/180x270" alt="">
+                            </li>
 
                         </ul>
 
                     </div>
-
-                </div>
-
+                    <div class="download-group">
 
 
-            </div>
+                        <p class="attach">8 files attached</p>
 
-            @*<div class="change-tool">
+                        <a href="#" class="download">
 
-            <div class="tool-container">
+                            <i class="fas fa-download"></i>
+                            Download All
 
-            <a href="#" class="reply">
-            <i class="fas fa-reply"></i>
-            Reply
-            </a>
+                        </a>
 
-            <a href="#" class="forward">
-            <i class="fas fa-share"></i>
-            Forward
-            </a>
-
-            </div>
-            </div>*@
-
-        </div>
-
-        <div class="aside">
-
-
-            <h4 class="compose">
-                <i class="fa-thin fa-pen-field fa-2xl"></i>
-                <span>Compose</span>
-            </h4>
-
-
-            <ul class="list">
-
-                <li>
-                    <a href="#">
-                        <i class="fa-duotone fa-envelope-open-text fa-2xl"></i>
-                        Inbox
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa-thin fa-message-heart fa-2xl"></i>
-                        Important
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-thin fa-bell-on fa-2xl"></i>
-                        Notification
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa-thin fa-trash-clock fa-2xl"></i>
-                        Trash
-                    </a>
-                </li>
-
-                <li>
-
-                    <a href="#">
-                        <i class="fa-thin fa-envelope-circle-check fa-2xl"></i>
-                        Sent
-                    </a>
-
-                </li>
-            </ul>
-
-            <div class="chat">
-
-                <div class="input-container">
-
-                    <button class="attach">
-                        <i class="fa fa-paperclip"></i>
-                    </button>
-
-                    <button class="send">
-                        <i class="fa-duotone fa-ufo fa-spin-pulse fa-lg"></i>
-                    </button>
-
-                    <button class="send-email">
-                            <i class="fa-sharp fa-solid fa-truck-fast"></i>
-                    </button>
-
-                    <div class="textarea-container">
-                        <textarea type="text" placeholder="message"></textarea>
                     </div>
 
                 </div>
 
+                <div class="message-title">
+
+
+                    <div class="message-avatar">
+
+
+                        <img src="/profilepictures/default-profile-picture.jpg" alt="">
+
+
+                    </div>
+
+
+                    <div class="message-info">
+
+
+                        <p class="message-name">
+
+                        </p>
+
+                        <p class="message-project">
+                            Subject:Nature walk
+                        </p>
+
+
+                    </div>
+
+
+                    <div class="message-sub-info">
+
+                        <p>August 10</p>
+                        <p>10:24 am</p>
+
+                    </div>
+
+
+                </div>
+
+                <div class="message-container">
+
+
+
+                    <div class="main-message">
+
+                        <div class="message-content">
+
+                            <!-- This is where all messages will be displayed -->
+                            <ul id="allMessages">
+
+                                <!-- Each message will be a list item -->
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                @*<div class="change-tool">
+
+                <div class="tool-container">
+
+                <a href="#" class="reply">
+                <i class="fas fa-reply"></i>
+                Reply
+                </a>
+
+                <a href="#" class="forward">
+                <i class="fas fa-share"></i>
+                Forward
+                </a>
+
+                </div>
+                </div>*@
+
             </div>
 
+            <div class="aside">
+
+
+                <h4 class="compose">
+                    <i class="fa-thin fa-pen-field fa-2xl"></i>
+                    <span>Compose</span>
+                </h4>
+
+
+                <ul class="list">
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-duotone fa-envelope-open-text fa-2xl"></i>
+                            Inbox
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa-thin fa-message-heart fa-2xl"></i>
+                            Important
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-thin fa-bell-on fa-2xl"></i>
+                            Notification
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa-thin fa-trash-clock fa-2xl"></i>
+                            Trash
+                        </a>
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+                            <i class="fa-thin fa-envelope-circle-check fa-2xl"></i>
+                            Sent
+                        </a>
+
+                    </li>
+                </ul>
+
+                <div class="chat">
+
+                    <div class="input-container">
+
+                        <button class="attach">
+                            <i class="fa fa-paperclip"></i>
+                        </button>
+
+                        <!-- Radio buttons to select message type -->
+
+                        <input type="radio" id="regularMessage" name="messageType" value="regular" checked>
+                        <label for="regularMessage">Regular Message</label>
+
+                        <input type="radio" id="emailMessage" name="messageType" value="email">
+                        <label for="emailMessage">Send as Email</label>
+
+                        <!-- Send button -->
+
+                        <button class="send">
+                            <i class="fa-duotone fa-ufo fa-spin-pulse fa-lg"></i>
+                        </button>
+
+                        <button class="send-email">
+                            <i class="fa-sharp fa-solid fa-truck-fast"></i>
+                        </button>
+
+                        <!-- Textarea for typing the message -->
+
+                        <div class="textarea-container">
+                            <textarea type="text" placeholder="message"></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
 
         </div>
 
-    </div>
 
-
-</body>
+    </body>
 
 </html>

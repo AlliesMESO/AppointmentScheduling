@@ -24,6 +24,7 @@ a.navbar-brand {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-end;
 }
 
 .navbar-nav {
@@ -553,3 +554,26 @@ fa-atom-simple {
     font-size: 46px;
 }
 
+/* Adjust the position of the search box */
+.form-inline {
+    margin-left: auto;
+}
+
+/* Apply the animation to the wave pulse icon */
+.fa-wave-pulse {
+    font-size: 24px; /* Adjust the font-size value as needed */
+    margin-top: 3px; /* Adjust the margin-top if necessary */
+    animation: continuousOscillation 2s linear infinite alternate; /* Adjust the duration and timing function as needed */
+}
+
+
+/* Add animation for continuous oscillating wave effect */
+@keyframes continuousOscillation {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50px); /* Adjust the distance and direction of the oscillation */
+    }
+}
