@@ -38,8 +38,8 @@ namespace AppointmentScheduling.DbInitializer
 
             }
 
-            //if (_db.Roles.Any(x => x.Name == Utility.Helper.Admin)) return;
 
+            if (_db.Roles.Any(x => x.Name == Utility.Helper.Admin)) return;
 
 
             _roleManager.CreateAsync(new IdentityRole(Helper.Admin)).GetAwaiter().GetResult();

@@ -182,11 +182,11 @@ namespace AppointmentScheduling.Migrations
 
                     b.Property<string>("RecipientId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SenderId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SenderName")
                         .HasColumnType("nvarchar(max)");
@@ -195,6 +195,10 @@ namespace AppointmentScheduling.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("MessageId");
+
+                    b.HasIndex("RecipientId");
+
+                    b.HasIndex("SenderId");
 
                     b.ToTable("Chats");
                 });
@@ -335,6 +339,25 @@ namespace AppointmentScheduling.Migrations
                     b.HasOne("AppointmentScheduling.Models.ViewModels.ChatMessage", null)
                         .WithMany("Attachments")
                         .HasForeignKey("ChatMessageMessageId");
+                });
+
+            modelBuilder.Entity("AppointmentScheduling.Models.ViewModels.ChatMessage", b =>
+                {
+                    b.HasOne("AppointmentScheduling.Models.ApplicationUser", "Recipient")
+                        .WithMany()
+                        .HasForeignKey("RecipientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AppointmentScheduling.Models.ApplicationUser", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Recipient");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
